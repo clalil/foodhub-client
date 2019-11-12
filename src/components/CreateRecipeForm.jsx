@@ -32,7 +32,7 @@ const CreateRecipeForm = (props) => {
           withPreview
           withIcon
           withLabel={false}
-          onChange={props.onAvatarDropHandler}
+          name="image"
           imgExtension={[".jpg", ".png"]}
           maxFileSize={5242880}
           singleImage={true}
