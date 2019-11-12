@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { fetchRecipes } from '../modules/requestRecipes';
-import { Message, Header } from 'semantic-ui-react'
+import React, { Component } from 'react'
+import { fetchRecipes } from '../modules/requestRecipes'
+import { Message, Header, Image } from 'semantic-ui-react'
 
 class ListRecipes extends Component {
   state = {
@@ -25,6 +25,7 @@ class ListRecipes extends Component {
       renderListRecipes = recipeData.map(recipe => {
         return (
           <div key={recipe.id}>
+            <Image src={recipe.image} alt="" wrapped ui={false} />
             <h1>{recipe.title}</h1>
             <p>{recipe.ingredients}</p>
             <p>{recipe.instructions}</p>
@@ -33,7 +34,10 @@ class ListRecipes extends Component {
       })
     } else {
       message = (
-        <Message style={{ color: 'red' }}>
+        <Message 
+        className="create-message" 
+        size="small"
+        style={{ color: 'red' }}>
           <Header
             as='p'
             id="message"
