@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Button } from 'semantic-ui-react'
+import ImageUploader from 'react-images-upload'
 
 const CreateRecipeForm = (props) => {
   return (
@@ -25,6 +26,16 @@ const CreateRecipeForm = (props) => {
           id="create-directions"
           placeholder='Add directions (maximum 5000 characters)'
           name="directions"
+        />
+        <ImageUploader
+          buttonText={"Upload article image (jpg/png)"}
+          withPreview
+          withIcon
+          withLabel={false}
+          onChange={props.onAvatarDropHandler}
+          imgExtension={[".jpg", ".png"]}
+          maxFileSize={5242880}
+          singleImage={true}
         />
         <Button
           id="submit-create-form"
