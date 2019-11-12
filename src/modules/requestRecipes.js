@@ -7,14 +7,15 @@ const fetchRecipes = async () => {
   return response.data.recipes
 }
 
-const submitRecipe = async (title, ingredients, directions) => {
+const submitRecipe = async (title, ingredients, directions, image) => {
   try {
     let response = await axios.post(apiUrl + 'recipes',
       { recipe:
         {
           title: title,
           ingredients: ingredients,
-          directions: directions
+          directions: directions,
+          image: image
         }
       }
     )
