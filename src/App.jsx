@@ -21,7 +21,7 @@ class App extends Component {
         <Navbar />
           <Route exact path='/' component={WelcomePage} />
           <Route exact path='/recipes' component={ListRecipes} />
-          <Route exact path='/recipe/:id' component={SingleRecipe} />
+          <Route exact path='/recipes/:id' component={SingleRecipe} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path='/login' component={Login}>
             {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
