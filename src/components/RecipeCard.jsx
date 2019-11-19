@@ -6,7 +6,6 @@ import '../css/recipe-card.css'
 const RecipeCard = props => {
   let recipe = props.recipe
   let linked = props.linked
-  
   let parent = props.recipe.parent
 
   return (
@@ -22,7 +21,7 @@ const RecipeCard = props => {
             {linked ? (
               <Link
                 id={`recipe-${recipe.id}`}
-                to={`/recipe/${recipe.id}`}
+                to={`/recipes/${recipe.id}`}
               >
                 <Card.Header as="h3" name="recipe-title">
                   {recipe.title}
@@ -48,7 +47,6 @@ const RecipeCard = props => {
                   to={`/recipe/${parent.id}`}
                 >
                   <p name="parent-data">{parent.title} by {parent.user_name}</p>
-
                 </Link>
               ) : ("") }
             </Card.Content>

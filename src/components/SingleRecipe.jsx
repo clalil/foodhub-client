@@ -24,6 +24,7 @@ class SingleRecipe extends Component {
         recipe: response.recipe
       })
     } else {
+      debugger;
       this.setState({
         message: response.error,
         error: true
@@ -63,7 +64,7 @@ class SingleRecipe extends Component {
           :
           <Button name="edit-recipe" onClick={this.renderEditForm}>Edit Recipe</Button>
       }
-      if (this.props.currentUser.attributes.id !== recipe.user_id) {
+      if (this.props.currentUser.attributes.id !== recipe.user_id && this.props.currentUser.isSignedIn) {
         fork = this.state.renderForkForm ?
           <RecipeCU fork recipe={recipe} />
           :

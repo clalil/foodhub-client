@@ -5,13 +5,15 @@
       "id": 1,  
       "title": "Quiche", 
       "ingredients": "Eggs", 
-      "directions": "Stir the mixture"
+      "directions": "Stir the mixture",
+      "user_id": "1"
     },
     {
       "id": 2,
       "title": "Chocolate Croissant", 
       "ingredients": "Creme", 
-      "directions": "Bake in the oven"
+      "directions": "Bake in the oven",
+      "user_id": "2"
     } 
   ]
 }

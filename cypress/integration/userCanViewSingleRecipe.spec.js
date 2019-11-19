@@ -29,3 +29,31 @@ describe('View single recipe', () => {
       .should('contain', 'The recipe could not be found')
   })
 })
+
+describe('User forks a single recipe', () => {
+  beforeEach(() => {
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/recipes/2',
+      status: 200,
+      response: 'fixture:forked_recipe.json'
+    })
+  })
+
+  
+  it('A forked recipe has original creators details', () => {
+    cy.route({
+      method: 'GET',
+      url: 'http://localhost:3000/v1/recipes/2',
+      status: 200,
+      response: 'fixture: forked_recipe.json'
+    })
+    cy.anotherLoginUser('user2@mail.com', 'password')
+    cy.get('#recipe-2').click({ force: true })
+    cy.get('[name="single-recipe"]').within(() => {
+      cy.get('.header').should('contain', 'Quiche')
+        .get('[name="parent-data"]').should('contain', 'Bob')
+        //.get('[name="recipe-parent-title"]').should('contain', 'Quiche')
+    })
+  })
+})
