@@ -1,6 +1,6 @@
 describe('View single recipe', () => {
 
-  it('Successfully', () => {
+  xit('Successfully', () => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/v1/recipes/1',
@@ -16,7 +16,7 @@ describe('View single recipe', () => {
     })
   })
 
-  it('Fails to', () => {
+  xit('Fails to', () => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/v1/recipes/1',
@@ -30,30 +30,22 @@ describe('View single recipe', () => {
   })
 })
 
-describe('User forks a single recipe', () => {
+describe('User has option to fork a single recipe', () => {
   beforeEach(() => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/v1/recipes/2',
-      status: 200,
-      response: 'fixture:forked_recipe.json'
+      response: 'fixture:forked_recipe.json',
+      status: 200
     })
   })
 
-  
   it('A forked recipe has original creators details', () => {
-    cy.route({
-      method: 'GET',
-      url: 'http://localhost:3000/v1/recipes/2',
-      status: 200,
-      response: 'fixture: forked_recipe.json'
-    })
     cy.anotherLoginUser('user2@mail.com', 'password')
     cy.get('#recipe-2').click({ force: true })
     cy.get('[name="single-recipe"]').within(() => {
       cy.get('.header').should('contain', 'Quiche')
-        .get('[name="parent-data"]').should('contain', 'Bob')
-        //.get('[name="recipe-parent-title"]').should('contain', 'Quiche')
+        .get('[name="parent-data"]').should('contain', 'This recipe Quiche was has been forked from Bob')
     })
   })
 })

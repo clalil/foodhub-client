@@ -46,7 +46,7 @@ const RecipeCard = props => {
                   id={`recipe-${parent.id}`}
                   to={`/recipe/${parent.id}`}
                 >
-                  <p name="parent-data">{parent.title} by {parent.user_name}</p>
+                  <p name="parent-data">This recipe {parent.title} was has been forked from {parent.user_name}</p>
                 </Link>
               ) : ("") }
             </Card.Content>

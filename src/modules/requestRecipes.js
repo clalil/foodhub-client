@@ -122,6 +122,7 @@ const getSingleRecipe = async (recipeId) => {
       recipe: response.data.recipe
     }
   } catch(error) {
+    debugger;
     return {
       error: error.response.data.error_message
     }
