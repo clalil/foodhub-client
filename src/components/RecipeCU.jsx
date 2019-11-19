@@ -11,6 +11,7 @@ class RecipeCU extends Component {
   }
 
   submitRecipeHandler = async event => {
+    debugger;
     event.preventDefault()
     const { history } = this.props
     let { title, directions, ingredients, image } = event.target
@@ -35,6 +36,7 @@ class RecipeCU extends Component {
         setTimeout(() => { history.push('/')}, 3000)
       )
     } else {
+      debugger;
       response = await submitRecipe(
         title.value,
         ingredients.value,

@@ -4,6 +4,7 @@ import AlertMessage from './AlertMessage'
 
 const RecipeForm = props => {
   let buttonText, header, subHeader, formId
+  debugger;
 
   switch(props.version) {
     case 'fork':
