@@ -45,6 +45,6 @@ describe('Creates a recipe', () => {
         .get('[name="submit"]').click()
     })
     cy.get('#response-message')
-      .should('contain', 'Unable to create recipe')
+      .should('contain', 'Unable to create recipe.')
   })
 })
