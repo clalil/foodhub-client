@@ -17,7 +17,7 @@ const AboutUs = () => {
           <Grid.Row>
             <Grid.Column width='10'>
               <Grid.Row>
-                <Header size='medium'>Meet the Team<img src={logo} alt='Logo'/></Header> 
+                <Header size='medium'>Meet the Team</Header> 
               </Grid.Row>  
               <br/>
               <Grid>
@@ -27,7 +27,7 @@ const AboutUs = () => {
                   <h3>Clarissa Liljander</h3>
                   <h3>Miyesier Kaerman</h3>
                   <h3>Sverrir Steindorsson</h3>
-                  <h3>Yasmine Ezekiel</h3>
+                  <h3>Yasmine Ezequiel</h3>
                 </Grid.Column>
                 <Grid.Column width='2'></Grid.Column>
                 <Grid.Column verticalAlign='middle' width='6'> 
