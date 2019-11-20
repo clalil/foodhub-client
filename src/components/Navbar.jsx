@@ -22,7 +22,7 @@ class Navbar extends Component {
 
   render() {
     const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 }
-    let logOut, logIn, welcomeMessage, createRecipe
+    let logOut, logIn, welcomeMessage, createRecipe, aboutUs
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = (
@@ -48,6 +48,13 @@ class Navbar extends Component {
         </Menu.Item>
       )
     } else {
+      aboutUs = (
+        <Menu.Item id='nav-create' as={NavLink} to='/about'>
+          <Header position='right'>
+            About Us
+          </Header>
+        </Menu.Item>
+      )
       logIn = (
         <Menu.Item id='nav-login' className='fake-link-hover'>
           <Header
@@ -104,6 +111,7 @@ class Navbar extends Component {
               </Menu.Item>
               {welcomeMessage}
               {createRecipe}
+              {aboutUs}
               {logIn}
               {logOut}
             </Menu.Menu>
@@ -124,6 +132,7 @@ class Navbar extends Component {
             <Menu.Menu position='right'>
             {welcomeMessage}
             {createRecipe}
+            {aboutUs}
             {logIn}
             {logOut}
             </Menu.Menu>
