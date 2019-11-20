@@ -1,11 +1,18 @@
 import React from 'react'
-import { Container, Divider, Grid, Icon } from 'semantic-ui-react'
+import LazyHero from 'react-lazy-hero';
+import { Container, Divider, Grid, Icon, Segment } from 'semantic-ui-react'
 import '../css/about-us.css'
 
 const AboutUs = () => {
   return (
     <>
-      <Container textAlign='left' >
+    <LazyHero
+            parallaxOffset={1}
+            minHeight='95vh'
+            opacity={0.2}
+            imageSrc="https://github.com/miyeaier/react-portfolio/blob/master/Img/AdobeStock_199252786.jpeg?raw=true"
+          >
+      <Container textAlign='left'>
         <br></br>
         <h1> About FOODHUB </h1>
         <br></br>
@@ -38,6 +45,7 @@ const AboutUs = () => {
             </Grid.Column>
           </Grid>
         </Container>
+        </LazyHero>
       </>
     )
   }
