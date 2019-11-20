@@ -1,64 +1,44 @@
 import React from 'react'
-import { Container, Divider, Grid, Header, Icon, Table } from 'semantic-ui-react'
+import { Container, Divider, Grid, Icon } from 'semantic-ui-react'
+import '../css/about-us.css'
 
 const AboutUs = () => {
   return (
     <>
-      <Container textAlign='center' >
-        <br/>
-        <h1> FOODHUB </h1>
-        <Divider/>
-        <Container text>
-        <p>FOODHUB is a social platform for food lovers.</p>
-        <p>A good meal brings people together and through FOODHUB, you can connect with others through the recipes you create.</p> 
-        <p>Create and share your favorite recipes with others around the world!</p>
-        </Container>
+      <Container textAlign='left' >
+        <br></br>
+        <h1> About FOODHUB </h1>
+        <br></br>
+
+          <Container>
+          <h3>FOODHUB is a social platform for food lovers. 
+              A good meal brings people together and through FOODHUB, you can connect with others through the recipes you create. 
+              Create and share your favorite recipes with others around the world!</h3>
+          </Container>
+        
         <h1> A Quick How-To </h1>
         <Divider/>
-        <Container text>
-        <p>At FOODHUB, you can customize existing recipes.</p>
-        <p>First, fork another person's recipe by pressing this button.</p>
-        <p>Then you can make changes and update the recipe in the way you like it best. Maybe an extra spoonful of sugar will do the trick!</p>
-        <p>Once you make your change, other's can see your changes and also view the origin user's recipe.</p>
-        <p>This is how the community of shared recipes is created!</p>
+        <Container>
+        <h3>At FOODHUB, you can customize existing recipes.
+            First, fork another person's recipe by pressing this button.
+            Then you can make changes and update the recipe in the way you like it best. Maybe an extra spoonful of sugar will do the trick!
+            Once you make your change, other's can see your changes and also view the origin user's recipe.
+            This is how the community of shared recipes is created!</h3>
         </Container>
-        <Grid>    
-          <Grid.Row>
-          <Divider/>
-            <Grid.Column width='8'>
-              <Grid.Row>
-                <Header size='medium'>Meet the Team</Header> 
-              </Grid.Row>  
-              <br/>
-              <Grid>
-                <Grid.Column verticalAlign='left' width='8'>
-                  <h3>Becca Burns</h3> 
-                  <h3>Clarissa Liljander</h3>
-                  <h3>Miyesier Kaerman</h3>
-                  <h3>Sverrir Steindorsson</h3>
-                  <h3>Yasmine Ezequiel</h3>
-                </Grid.Column>
-                <Grid.Column width='2'></Grid.Column>
-                <Grid.Column verticalAlign='middle' width='6'> 
-                  <Table collapsing>
-                    <Table.Header> 
-                      <Table.HeaderCell><Icon size='large' name='github square'/>Find Us on GitHub</Table.HeaderCell>
-                    </Table.Header>
-                    <Table.Body>
-                      <Table.Row><Table.Cell><h4><a href='https://github.com/' ><Icon name='github'/>Becca</a></h4></Table.Cell></Table.Row>
-                      <Table.Row> <Table.Cell><h4><a href='https://github.com/' ><Icon name='github'/>Clarissa</a></h4></Table.Cell></Table.Row>
-                      <Table.Row><Table.Cell><h4><a href='https://github.com/' ><Icon name='github'/>Miyesier</a></h4></Table.Cell></Table.Row>
-                      <Table.Row><Table.Cell><h4><a href='https://github.com/' ><Icon name='github'/>Sverrir</a></h4></Table.Cell></Table.Row>
-                      <Table.Row><Table.Cell><h4><a href='https://github.com/' ><Icon name='github'/>Yasmine</a></h4></Table.Cell></Table.Row>
-                    </Table.Body>
-                  </Table>
-                </Grid.Column>
-              </Grid>
+        
+        <h1> Meet the Team </h1>
+        <Divider/>
+          <Grid>
+            <Grid.Column verticalAlign='center' width='8'>
+              <h3><a href='https://github.com/' ><Icon name='github'/>Becca Burns</a></h3>
+              <h3><a href='https://github.com/' ><Icon name='github'/>Clarissa</a></h3>
+              <h3><a href='https://github.com/' ><Icon name='github'/>Miyesier</a></h3>
+              <h3><a href='https://github.com/' ><Icon name='github'/>Sverrir</a></h3>
+              <h3><a href='https://github.com/' ><Icon name='github'/>Yasmine</a></h3>
             </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Container>
-    </>
-  )
-}
+          </Grid>
+        </Container>
+      </>
+    )
+  }
 export default AboutUs
