@@ -41,19 +41,19 @@ const fetchCookbookPdf = async () => {
 
 const submitLike = async (recipeId, rating) => {
   try {
-    let response = await axios.post(apiUrl + `recipes/${recipeId}/like`, 
+    debugger;
+    let response = await axios.post(apiUrl + `recipes/${recipeId}/rating`, 
       {
-        rating: rating
+        score: rating
       },
       {
         headers: getCurrentCredentials()
       }
     )
-    return {
-      message: response.data.message
-    }
+    return response
   } catch(error) {
     debugger;
+
     return {
       error: error.response.data.error_message
     }

@@ -57,14 +57,16 @@ class SingleRecipe extends Component {
     }
   }
 
-  submitRecipeAsLiked = async (e, { rating, maxRating }) => {
+  submitRecipeAsLiked = async (e, { rating }) => {
     let response = await submitLike(this.state.recipe.id, rating)
 
-    if (response.message) {
+    if (response.status === 201) {
+      debugger;
       this.setState({
-        message: response.message
+        message: `You gave this recipe ${rating} stars!`
       })
     } else {
+      debugger;
       this.setState({
         message: response.error,
         error: true
