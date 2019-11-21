@@ -1,10 +1,11 @@
 import React from 'react'
-import { Container, Divider, Grid, Icon, Image, Header, Segment, Button, Step, Modal } from 'semantic-ui-react'
+import { Container, Divider, Icon, Image, Card, Grid, Segment, Button, Step, Modal } from 'semantic-ui-react'
 import '../css/about-us.css'
 
 const AboutUs = () => {
   return (
     <div className="cu-bg">
+       <Segment style={{ padding: '8em 0em' }} vertical>
       <Container textAlign='left'>
         <br></br>
         <h1>About FOODHUB</h1>
@@ -78,24 +79,85 @@ const AboutUs = () => {
               </Modal>
             </Step>
           </Step.Group>
-        </Container>
-        <br></br>
-        <br></br>
-        <Segment>
-          <h1> Meet the Team </h1>
           <Divider/>
-            <Grid>
-              <Grid.Column verticalAlign='left' width='8'>
-                <h3><a href='https://github.com/beccaburns' ><Icon name='github'/>Becca Burns</a></h3>
-                <h3><a href='https://github.com/clalil' ><Icon name='github'/>Clarissa</a></h3>
-                <h3><a href='https://github.com/' ><Icon name='github'/>Miyesier</a></h3>
-                <h3><a href='https://github.com/shsteindorsson' ><Icon name='github'/>Sverrir</a></h3>
-                <h3><a href='https://github.com/yasmineezequiel' ><Icon name='github'/>Yasmine</a></h3>
-              </Grid.Column>
-            </Grid>
-          </Segment>
         </Container>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+         
+          <Container>
+          <br></br>
+          <br></br>
+          <Grid container stackable verticalAlign='middle'>
+        <Grid.Row>
+        <Grid.Column width={6}>
+            <Image bordered rounded size='large' src='https://www.gatherandfeast.com/sites/gatherandfeast/files/images/gather-and-feast-table-scene.jpg' />
+          </Grid.Column>
+          <Grid.Column floated='right' width={8}>
+          <center><h1> Meet the Team </h1></center>
+          <Divider />
+            <Card centered={true}>
+              <Card.Content>
+                <Card.Header><h3><a href='https://github.com/beccaburns' ><Icon name='github'/>Becca Burns</a></h3></Card.Header>
+                <Card.Meta>Future Junior Developer</Card.Meta>
+                <Card.Description>
+                  BB is a prior digital marketing professional who aspires to bridge a gap between tech & marketing in a new role.
+                </Card.Description> 
+              </Card.Content>
+            </Card>
+            <Card centered={true}>
+              <Card.Content>
+                <Card.Header><h3><a href='https://github.com/clalil' ><Icon name='github'/>Clarissa</a></h3></Card.Header>
+                <Card.Meta>Future Junior Developer</Card.Meta>
+                <Card.Description>
+                  She's a coding wizard & is always ready to offer advice and a helping hand. 
+                  Clarissa fosters bunnies & her favorite coding language is JavaScript!
+                </Card.Description>
+              </Card.Content>
+            </Card> 
+            <Card centered={true}>
+              <Card.Content>
+                <Card.Header><h3><a href='https://github.com/shsteindorsson' ><Icon name='github'/>Sverrir</a></h3></Card.Header>
+                <Card.Meta>Future Junior Developer</Card.Meta>
+                <Card.Description>
+                  When Sverrir isn't coding, he loves a good Will Ferrel comedy or a quick video game session! 
+                  He's also a Festivus supporter(We know where we're going for the holidays) - and recently found out he is almost 50% Irish.
+                </Card.Description>
+              </Card.Content>
+            </Card>       
+            <Card centered={true}>
+              <Card.Content>
+                <Card.Header><h3><a href='https://github.com/yasmineezequiel' ><Icon name='github'/>Yasmine</a></h3></Card.Header>
+                <Card.Meta>Future Junior Developer</Card.Meta>
+                <Card.Description>
+                  The Jacklyn of ALL TRADES! This lady has done everything from property management to working as a dive master in Honduras(Yes, a dream! 
+                  She's done over 100 dives!!! What?!)! Yasmine is a world traveler who made a career shift from travel agent to junior backend developer! 
+                </Card.Description>
+              </Card.Content>
+            </Card>     
+            <Card centered={true}>
+              <Card.Content>
+                <Card.Header><h3><a href='https://github.com/yasmineezequiel' ><Icon name='github'/>Miyesier</a></h3></Card.Header>
+                <Card.Meta>Future Junior Developer</Card.Meta>
+                <Card.Description>      
+                </Card.Description>
+              </Card.Content>
+            </Card> 
+            </Grid.Column>
+            
+            
+        </Grid.Row>
+      </Grid>
+          </Container>            
+        </Container>
+        </Segment>
       </div>
     )
   }
+
 export default AboutUs
