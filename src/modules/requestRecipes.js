@@ -15,6 +15,15 @@ const fetchRecipes = async () => {
   return response.data.recipes
 }
 
+const searchRecipes = async (query) => {
+  try {
+    let response = await axios.get(apiUrl + 'recipes')
+    return response.data
+  } catch(error) {
+    return error.response
+  }
+}
+
 const fetchCurrentUsersRecipes = async () => {
   let response = await axios.get(apiUrl + 'recipes?user_recipe=true',
     {
@@ -136,4 +145,4 @@ const getSingleRecipe = async (recipeId) => {
   }
 }
 
-export { fetchRecipes, submitRecipe, getSingleRecipe, editRecipe, forkRecipe, fetchCurrentUsersRecipes }
+export { fetchRecipes, submitRecipe, getSingleRecipe, editRecipe, forkRecipe, fetchCurrentUsersRecipes, searchRecipes }
