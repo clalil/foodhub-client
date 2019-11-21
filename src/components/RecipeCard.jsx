@@ -1,5 +1,5 @@
 import React from "react"
-import { Divider, Grid, Image, Card, Button, Icon } from "semantic-ui-react"
+import { Divider, Grid, Image, Card, Button, Icon, Rating } from "semantic-ui-react"
 import { Link } from "react-router-dom"
 import '../css/recipe-card.css'
 
@@ -14,9 +14,7 @@ const RecipeCard = props => {
       </Button>
     )
     addLikeToRecipe = (
-      <Button color="orange" name="add-like-to-recipe" onClick={() => props.submitRecipeAsLiked()}>
-        <Icon name= 'like'/> Like this recipe
-      </Button>
+      <Rating maxRating={5} onRate={props.submitRecipeAsLiked} />
     )
   }
 
