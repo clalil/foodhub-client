@@ -35,7 +35,7 @@ const AboutUs = () => {
                   <Image wrapped size='large' src='https://144f2a3a2f948f23fc61-ca525f0a2beaec3e91ca498facd51f15.ssl.cf3.rackcdn.com/uploads/food_portal_data/recipes/recipe/hero_article_image/3329/7f164063ce0ede8959b2/letterbox_SMALLERSharingBread_103918.jpg' />
                   <Modal.Description>
                     <h3>Once you create an account on FOODHUB, you can create your own recipe!</h3>
-                    <h3>What fun recipes would you like to share with our FOODHUB community of foodies?</h3>
+                    <h3>What yummy recipes would you like to share with our FOODHUB community of foodies?</h3>
                     <a href='/signup'>Create an account today!</a>
                   </Modal.Description>
                 </Modal.Content>
@@ -103,8 +103,8 @@ const AboutUs = () => {
           <Divider />
             <Card centered={true}>
               <Card.Content>
-                <Card.Header><h3><a href='https://github.com/beccaburns' ><Icon name='github'/>Becca Burns</a></h3></Card.Header>
-                <Card.Meta>Future Junior Developer</Card.Meta>
+                <Card.Header><h3><a href='https://github.com/beccaburns' ><Icon name='github'/>Becca</a></h3></Card.Header>
+                <Card.Meta>Junior Developer</Card.Meta>
                 <Card.Description>
                   BB is a prior digital marketing professional who aspires to bridge a gap between tech & marketing in a new role.
                 </Card.Description> 
@@ -113,7 +113,7 @@ const AboutUs = () => {
             <Card centered={true}>
               <Card.Content>
                 <Card.Header><h3><a href='https://github.com/clalil' ><Icon name='github'/>Clarissa</a></h3></Card.Header>
-                <Card.Meta>Future Junior Developer</Card.Meta>
+                <Card.Meta>Junior Developer</Card.Meta>
                 <Card.Description>
                   She's a coding wizard & is always ready to offer advice and a helping hand. 
                   Clarissa fosters bunnies & her favorite coding language is JavaScript!
@@ -123,7 +123,7 @@ const AboutUs = () => {
             <Card centered={true}>
               <Card.Content>
                 <Card.Header><h3><a href='https://github.com/shsteindorsson' ><Icon name='github'/>Sverrir</a></h3></Card.Header>
-                <Card.Meta>Future Junior Developer</Card.Meta>
+                <Card.Meta>Junior Developer</Card.Meta>
                 <Card.Description>
                   When Sverrir isn't coding, he loves a good Will Ferrel comedy or a quick video game session! 
                   He's also a Festivus supporter(We know where we're going for the holidays) - and recently found out he is almost 50% Irish.
@@ -133,7 +133,7 @@ const AboutUs = () => {
             <Card centered={true}>
               <Card.Content>
                 <Card.Header><h3><a href='https://github.com/yasmineezequiel' ><Icon name='github'/>Yasmine</a></h3></Card.Header>
-                <Card.Meta>Future Junior Developer</Card.Meta>
+                <Card.Meta>Junior Developer</Card.Meta>
                 <Card.Description>
                   The Jacklyn of ALL TRADES! This lady has done everything from property management to working as a dive master in Honduras(Yes, a dream! 
                   She's done over 100 dives!!! What?!)! Yasmine is a world traveler who made a career shift from travel agent to junior backend developer! 
@@ -143,7 +143,7 @@ const AboutUs = () => {
             <Card centered={true}>
               <Card.Content>
                 <Card.Header><h3><a href='https://github.com/yasmineezequiel' ><Icon name='github'/>Miyesier</a></h3></Card.Header>
-                <Card.Meta>Future Junior Developer</Card.Meta>
+                <Card.Meta>Junior Developer</Card.Meta>
                 <Card.Description>      
                   This cat lover is a heart with arms and legs! She keeps the team light-hearted and is the queen of design and picking the perfect images(which she usually takes herself!).
                 </Card.Description>
