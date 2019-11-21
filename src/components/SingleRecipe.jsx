@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
 import { getSingleRecipe } from '../modules/requestRecipes'
-import { submitFavorite } from '../modules/requestFavorites'
+import { submitFavorite, submitLike } from '../modules/requestFavorites'
 import '../css/single-recipe.css'
 import RecipeCard from './RecipeCard'
 import RecipeCU from './RecipeCU'
@@ -57,6 +57,21 @@ class SingleRecipe extends Component {
     }
   }
 
+  submitRecipeAsLiked = async () => {
+    let response = await submitLike(this.state.recipe.id)
+
+    if (response.message) {
+      this.setState({
+        message: response.message
+      })
+    } else {
+      this.setState({
+        message: response.error,
+        error: true
+      })
+    }
+  }
+
   renderEditForm = () => {
     this.setState({
       renderEditForm: true
@@ -89,17 +104,19 @@ class SingleRecipe extends Component {
           :
           <Button name="edit-recipe" onClick={this.renderEditForm}>Edit Recipe</Button>
       }
-      if (this.props.currentUser.attributes.id !== recipe.user_id && this.props.currentUser.isSignedIn) {
+      if (this.props.currentUser.attributes.id !== recipe.user_id) {
         fork = this.state.renderForkForm ?
           <RecipeCU fork recipe={recipe} />
           :
           <Button name="fork-recipe" onClick={this.renderForkForm}>Fork Recipe</Button>
       }
+
       showSingleRecipe = (
         <RecipeCard
           recipe={recipe}
           linked={false}
           setRecipeAsFavorite={this.submitRecipeAsFavorite}
+          submitRecipeAsLiked={this.submitRecipeAsLiked}
           isSignedIn={this.props.currentUser.isSignedIn}
         >
           {edit}

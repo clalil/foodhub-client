@@ -13,6 +13,11 @@ const RecipeCard = props => {
         <Icon name= 'plus'/> Add this recipe to your favorites
       </Button>
     )
+    addLikeToRecipe = (
+      <Button color="olive" name="add-like-to-recipe" onClick={() => props.submitRecipeAsLiked()}>
+        <Icon name= 'plus'/> Like this recipe
+      </Button>
+    )
   }
 
   let parent = props.recipe.parent
@@ -63,6 +68,7 @@ const RecipeCard = props => {
             </Card.Content>
           </Card.Content>
           {addRecipeToFavorites}
+          {addLikeToRecipe}
           {props.children}
         </Card>
       </Grid.Column>

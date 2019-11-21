@@ -64,7 +64,7 @@ describe('View single recipe', () => {
     }),
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/v1/recipes/1',
+      url: 'http://localhost:3000/v1/recipes/like',
       response: '{"message": "You like this recipe!"}',
       status: 201
     })
@@ -72,7 +72,7 @@ describe('View single recipe', () => {
     cy.loginUser('user@mail.com', 'password')
     cy.get('#recipe-1').click({ force: true })
     cy.get('#likes').should('contain', '0')
-    cy.get('name["like-btn"]').click()
+    cy.get('name["add-like-to-recipe"]').click()
     cy.get('#response-message')
       .should('contain', 'You like this recipe!')
     cy.get('#likes').should('contain', '1')
