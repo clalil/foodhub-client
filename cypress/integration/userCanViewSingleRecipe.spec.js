@@ -58,23 +58,20 @@ describe('View single recipe', () => {
   it('A recipe can have ratings', () => {
     cy.route({
       method: 'GET',
-      url: 'http://localhost:3000/v1/recipes/2',
+      url: 'http://localhost:3000/v1/recipes/1',
       response: 'fixture:single_recipe.json',
       status: 200
     }),
     cy.route({
       method: 'POST',
-      url: 'http://localhost:3000/v1/recipes/like',
-      response: '{"message": "You like this recipe!"}',
+      url: 'http://localhost:3000/v1/recipes/1/like',
+      response: '{"message": "You liked this recipe!"}',
       status: 201
     })
 
-    cy.loginUser('user@mail.com', 'password')
+    cy.loginUser('user2@mail.com', 'password')
     cy.get('#recipe-1').click({ force: true })
-    cy.get('#likes').should('contain', '0')
-    cy.get('name["add-like-to-recipe"]').click()
-    cy.get('#response-message')
-      .should('contain', 'You like this recipe!')
-    cy.get('#likes').should('contain', '1')
+    cy.get('[name="add-like-to-recipe"]').click()
+    cy.get('#response-message').should('contain', 'You liked this recipe!')
   })
 })

@@ -6,7 +6,7 @@ import '../css/recipe-card.css'
 const RecipeCard = props => {
   let recipe = props.recipe
   let linked = props.linked
-  let addRecipeToFavorites
+  let addRecipeToFavorites, addLikeToRecipe
   if (props.isSignedIn) {
     addRecipeToFavorites = (
       <Button color="olive" name="save-recipe-to-cookbook" onClick={() => props.setRecipeAsFavorite()}>
@@ -14,8 +14,8 @@ const RecipeCard = props => {
       </Button>
     )
     addLikeToRecipe = (
-      <Button color="olive" name="add-like-to-recipe" onClick={() => props.submitRecipeAsLiked()}>
-        <Icon name= 'plus'/> Like this recipe
+      <Button color="orange" name="add-like-to-recipe" onClick={() => props.submitRecipeAsLiked()}>
+        <Icon name= 'like'/> Like this recipe
       </Button>
     )
   }
