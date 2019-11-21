@@ -145,6 +145,7 @@ const AboutUs = () => {
                 <Card.Header><h3><a href='https://github.com/yasmineezequiel' ><Icon name='github'/>Miyesier</a></h3></Card.Header>
                 <Card.Meta>Future Junior Developer</Card.Meta>
                 <Card.Description>      
+                  This cat lover is a heart with arms and legs! She keeps the team light-hearted and is the queen of design and picking the perfect images(which she usually takes herself!).
                 </Card.Description>
               </Card.Content>
             </Card> 
