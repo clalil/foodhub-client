@@ -9,7 +9,7 @@ describe('Visitor can search for recipe', () => {
     cy.get('#navbar').within(() => {
       cy.get('#nav-search').within(() => {
         cy.get('#search-input').type('Quiche')
-        cy.get('#search-submit').click()
+        cy.get('#search-submit').click({force: true})
       })       
     })
     cy.get('[name="recipe-1"]').within(() => {
@@ -24,12 +24,7 @@ describe('Visitor can search for recipe', () => {
       response: 'fixture:query_response.json'
     })
 
-    cy.loginUser('user@mail.com', 'password')
-
-    cy.get('#navbar').within(() => {
-      cy.get('#nav-create').click()
-    })
-
+    cy.anotherLoginUser('user@mail.com', 'password')
     cy.get('#navbar').within(() => {
       cy.get('#nav-search').within(() => {
         cy.get('#search-input').type('Quiche')
