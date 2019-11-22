@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Login from './Login'
 import Logout from './Logout'
+import Search from './Search'
 
 class Navbar extends Component {
   state = { visibleSidebar: false, modalOpen: false }
@@ -22,7 +23,7 @@ class Navbar extends Component {
 
   render() {
     const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 }
-    let logOut, logIn, welcomeMessage, createRecipe, cookbook, userProfile
+    let logOut, logIn, welcomeMessage, createRecipe, cookbook, userProfile, search
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = (
@@ -76,7 +77,7 @@ class Navbar extends Component {
         </Menu.Item>
       )
       search = (
-        <Menu.Item id='nav-search' as='/recipes'>
+        <Menu.Item id='nav-search' className='fake-link-hover'>
           <Header
             position='right'
             onClick={this.handleModalOpen}>
@@ -133,6 +134,7 @@ class Navbar extends Component {
               {createRecipe}
               {cookbook}
               {logIn}
+              {search}
               {userProfile}
               {logOut}
             </Menu.Menu>
@@ -154,6 +156,7 @@ class Navbar extends Component {
             {welcomeMessage}
             {createRecipe}
             {cookbook}
+            {search}
             {logIn}
             {userProfile}
             {logOut}

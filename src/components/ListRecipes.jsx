@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { fetchRecipes } from "../modules/requestRecipes"
 import { Message, Header, Grid } from "semantic-ui-react"
+import { withRouter } from "react-router"
+
 import RecipeCard from "./RecipeCard"
 
 class ListRecipes extends Component {
@@ -8,11 +10,28 @@ class ListRecipes extends Component {
     recipes: []
   }
 
-  componentDidMount() {
-    fetchRecipes().then(result => {
-      this.setState({
-        recipes: result
-      })
+  componentDidUpdate() {
+    this.checkCurrentRecipesForQuery()
+  }
+
+  checkCurrentRecipesForQuery = () => {
+    if (this.props.location.state !== undefined) {
+      if (this.props.location.state.queryResponse !== undefined) {
+        if (this.props.location.state.queryResponse !== this.state.recipes) {
+          this.setRecipes(this.props.location.state.queryResponse)
+        }
+      }
+    }
+  }
+
+  async componentDidMount() {
+    let response = await fetchRecipes()
+    this.setRecipes(response)
+  }
+
+  setRecipes = (recipes) => {
+    this.setState({
+      recipes: recipes
     })
   }
   
@@ -47,4 +66,4 @@ class ListRecipes extends Component {
   }
 }
 
-export default ListRecipes
+export default withRouter(ListRecipes)

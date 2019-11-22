@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { Menu, Input, Icon } from 'semantic-ui-react'
 import "../css/search-recipe.css"
-import { Link } from "react-router-dom"
-import { fetchRecipes } from "../modules/requestRecipes"
+import { withRouter } from "react-router"
+import { searchRecipes } from "../modules/requestRecipes"
 import { Message, Header, Grid } from "semantic-ui-react"
 
   
 class Search extends Component {
   state = {
     searchRecipes: [],
-    q: "",
+    query: "",
     message: null,
   }
 
@@ -20,19 +20,25 @@ class Search extends Component {
   }
 
   getSearchRecipes = async () => {
-    const { q } = this.state
-    if (q.length < 1) {
+    const { history } = this.props
+    const { query } = this.state
+    if (query.length < 1) {
       this.setState({
         errorMessage: 'Please input more than two characters.'
       })
     } else {
       let response = await searchRecipes(query)
-      if (response.error_message) {
+
+      if (response.errorMessage) {
         this.setState({
-          errorMessage: response.error_message
+          errorMessage: response.errorMessage
         })
       } else {
-        this.props.history.push("/search", { searchResults: response })
+        history.push({
+          pathname: '/',
+          state: { queryResponse: response },
+          search: 'from_search'
+        })      
       }
     }
   }
@@ -48,6 +54,7 @@ class Search extends Component {
       <Menu.Item id="nav-search">
         <Input
           title="search-input"
+          id="search-input"
           placeholder="Search..."
           name="query"
           onChange={this.inputChangeHandler}
@@ -69,4 +76,4 @@ class Search extends Component {
   }
 }
 
-export default Search
+export default withRouter(Search)
