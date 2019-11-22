@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from 'semantic-ui-react'
 import { getSingleRecipe } from '../modules/requestRecipes'
-import { submitFavorite, submitLike } from '../modules/requestFavorites'
+import { submitFavorite, submitRating } from '../modules/requestFavorites'
 import '../css/single-recipe.css'
 import RecipeCard from './RecipeCard'
 import RecipeCU from './RecipeCU'
@@ -57,8 +57,8 @@ class SingleRecipe extends Component {
     }
   }
 
-  submitRecipeAsLiked = async (e, { rating }) => {
-    let response = await submitLike(this.state.recipe.id, rating)
+  submitRecipeRating = async (e, { rating }) => {
+    let response = await submitRating(this.state.recipe.id, rating)
 
     if (response.status === 201) {
       debugger;
@@ -118,7 +118,7 @@ class SingleRecipe extends Component {
           recipe={recipe}
           linked={false}
           setRecipeAsFavorite={this.submitRecipeAsFavorite}
-          submitRecipeAsLiked={this.submitRecipeAsLiked}
+          submitRecipeRating={this.submitRecipeRating}
           isSignedIn={this.props.currentUser.isSignedIn}
         >
           {edit}

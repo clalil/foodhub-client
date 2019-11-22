@@ -6,15 +6,15 @@ import '../css/recipe-card.css'
 const RecipeCard = props => {
   let recipe = props.recipe
   let linked = props.linked
-  let addRecipeToFavorites, addLikeToRecipe
+  let addRecipeToFavorites, rateRecipe
   if (props.isSignedIn) {
     addRecipeToFavorites = (
       <Button color="olive" name="save-recipe-to-cookbook" onClick={() => props.setRecipeAsFavorite()}>
         <Icon name= 'plus'/> Add this recipe to your favorites
       </Button>
     )
-    addLikeToRecipe = (
-      <Rating maxRating={5} onRate={props.submitRecipeAsLiked} />
+    rateRecipe = (
+      <Rating maxRating={5} onRate={props.submitRecipeRating} />
     )
   }
 
@@ -66,7 +66,7 @@ const RecipeCard = props => {
             </Card.Content>
           </Card.Content>
           {addRecipeToFavorites}
-          {addLikeToRecipe}
+          {rateRecipe}
           {props.children}
         </Card>
       </Grid.Column>

@@ -39,7 +39,7 @@ const fetchCookbookPdf = async () => {
   return response.data
 }
 
-const submitLike = async (recipeId, rating) => {
+const submitRating = async (recipeId, rating) => {
   try {
     debugger;
     let response = await axios.post(apiUrl + `recipes/${recipeId}/rating`, 
@@ -60,4 +60,4 @@ const submitLike = async (recipeId, rating) => {
   }
 }
 
-export { submitFavorite, fetchFavorites, fetchCookbookPdf, submitLike }
+export { submitFavorite, fetchFavorites, fetchCookbookPdf, submitRating }
