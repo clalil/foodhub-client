@@ -9,7 +9,7 @@ const RecipeCard = props => {
   let currentUser = props.currentUser
   let addRecipeToFavorites, rateRecipe, averageRating, userRating
   let parent = props.recipe.parent
-  let splitRecipe = recipe.ingredients.split(',').map((ingredient, index) => <List key={index}>{ingredient}</List>)
+  let splitRecipe = recipe.ingredients.split(',').map((ingredient, index) => <List style={{ margin: '0' }}key={index}>{ingredient}</List>)
 
   if (currentUser.isSignedIn) {
     addRecipeToFavorites = (
@@ -24,8 +24,8 @@ const RecipeCard = props => {
       rateRecipe = (
         <p id="rate-recipe">
           {userRating}
-          Rate the recipe:
-          <Rating defaultRating={recipe.user_rating} maxRating={5} onRate={props.submitRecipeRating} />
+          Rate this recipe:
+          <Rating icon='star' defaultRating={recipe.user_rating} maxRating={5} onRate={props.submitRecipeRating} />
         </p>
       )
     }
@@ -35,7 +35,7 @@ const RecipeCard = props => {
     averageRating = (
       <p>
         This recipe has an average rating of {recipe.rating}
-        <Rating size={'large'} disabled={true} maxRating={1} defaultRating={1} />
+        <Rating icon='star' size={'large'} disabled={true} maxRating={1} defaultRating={1} />
       </p>
     )
   }
@@ -80,9 +80,11 @@ const RecipeCard = props => {
                   <center><p style={{ fontSize: "16px", marginLeft: "1rem", marginBottom: "1rem" }}>{averageRating}{rateRecipe}</p></center>
                   </Card.Content>    
                   <Card.Description>
-                    <p style={{ fontWeight: "bold" }}>Ingredients: </p>
-                    <p name="recipe-ingredients" style={{ margin: '0' }}>{splitRecipe}</p>
-                    <p style={{ fontWeight: "bold" }}>Directions: </p>
+                    <p style={{ fontWeight: "bold", margin: '0' }}>Description: </p>
+                    <p name="recipe-description">{recipe.description}</p>
+                    <p style={{ fontWeight: "bold", margin: '0' }}>Ingredients: </p>
+                    <p name="recipe-ingredients">{splitRecipe}</p>
+                    <p style={{ fontWeight: "bold", margin: '0' }}>Directions: </p>
                     <p name="recipe-directions">{recipe.directions}</p>
                   </Card.Description>
                   </Card.Content>
@@ -96,7 +98,6 @@ const RecipeCard = props => {
                         <Icon name='food' size='large' />
                         This recipe was forked from '{parent.title}' by {parent.user_name}
                       </p>
-                      <p>Forked by {recipe.user_name}</p>
                     </Link>
                   ) : (<p>Created by {recipe.user_name}</p>)}
                 </Card.Content> 

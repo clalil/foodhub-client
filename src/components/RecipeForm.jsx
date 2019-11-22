@@ -63,6 +63,15 @@ const RecipeForm = props => {
 
               />
             </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Input
+                fluid
+                label="Description"
+                placeholder="Add a description of your recipe (maximum 255 characters)"
+                name="description"
+                defaultValue={props.version === 'edit' || 'fork' ? props.recipe.title : ''}
+              />
+            </Form.Group>
             <Form.TextArea
               label="Ingredients"
               placeholder="Add ingredients (maximum 500 characters)"

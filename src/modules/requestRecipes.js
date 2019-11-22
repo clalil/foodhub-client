@@ -24,11 +24,12 @@ const fetchCurrentUsersRecipes = async () => {
   return response.data.recipes
 }
 
-const submitRecipe = async (title, ingredients, directions, image) => {
+const submitRecipe = async (title, description, ingredients, directions, image) => {
   try {
     let encodedImage, recipeParams
     recipeParams = {
       title: title,
+      description: description,
       ingredients: ingredients,
       directions: directions
     }
@@ -57,11 +58,12 @@ const submitRecipe = async (title, ingredients, directions, image) => {
   }
 }
 
-const editRecipe = async (title, ingredients, directions, image, recipeId) => {
+const editRecipe = async (title, description, ingredients, directions, image, recipeId) => {
   try {
     let encodedImage, recipeParams
     recipeParams = {
       title: title,
+      description: description,
       ingredients: ingredients,
       directions: directions
     }
@@ -90,11 +92,12 @@ const editRecipe = async (title, ingredients, directions, image, recipeId) => {
   }
 }
 
-const forkRecipe = async (title, ingredients, directions, image, recipeId) => {
+const forkRecipe = async (title, description, ingredients, directions, image, recipeId) => {
   try {
     let encodedImage, recipeParams
     recipeParams = {
       title: title,
+      description: description,
       ingredients: ingredients,
       directions: directions
     }

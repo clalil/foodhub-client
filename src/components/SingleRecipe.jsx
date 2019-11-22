@@ -89,15 +89,14 @@ class SingleRecipe extends Component {
     this.setState({
       renderEditForm: false
     })
-    this.fetchRecipe()
+    this.fetchRecipe(this.state.recipe.id)
   }
 
-  closeForkForm = (recipeId) => {
+  closeForkForm = () => {
     this.setState({
       renderForkForm: false
     })
-
-    this.fetchRecipe(recipeId)
+    this.fetchRecipe(this.state.recipe.id)
   }
 
   render() {
@@ -112,7 +111,7 @@ class SingleRecipe extends Component {
         />
       )
     }
-    debugger
+
     if (recipe) {
       if (this.props.currentUser.isSignedIn) {
         if (this.props.currentUser.attributes.id === recipe.user_id) {
