@@ -10,6 +10,16 @@
   padding-bottom: 5rem;
 }
 
+#welcome h3{
+  font-size: 2rem;
+  margin-top: -70px;
+  color:rgb(0, 0, 0);
+  font-family: 'Lato' !important;
+  padding-bottom: 5rem;
+  font-weight: 600 !important;
+  margin-right: 700px;
+}
+
 #welcome h5{
   font-size: 2rem;
   margin-top: -70px;
