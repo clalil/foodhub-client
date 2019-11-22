@@ -39,4 +39,22 @@ const fetchCookbookPdf = async () => {
   return response.data
 }
 
-export { submitFavorite, fetchFavorites, fetchCookbookPdf }
+const submitRating = async (recipeId, rating) => {
+  try {
+    let response = await axios.post(apiUrl + `recipes/${recipeId}/rating`, 
+      {
+        score: rating
+      },
+      {
+        headers: getCurrentCredentials()
+      }
+    )
+    return response
+  } catch(error) {
+    return {
+      error: error.response.data.error_message
+    }
+  }
+}
+
+export { submitFavorite, fetchFavorites, fetchCookbookPdf, submitRating }

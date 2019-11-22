@@ -22,7 +22,7 @@ class ListRecipes extends Component {
     let message
     if (recipeData.length > 0) {
       renderListRecipes = recipeData.reverse().map(recipe => {
-        return <RecipeCard key={recipe.id} recipe={recipe} linked />
+        return <RecipeCard currentUser={false} key={recipe.id} recipe={recipe} linked />
       })
     } else {
       message = (
