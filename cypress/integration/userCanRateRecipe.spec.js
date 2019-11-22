@@ -13,9 +13,9 @@ describe('User can leave rating', () => {
       response: {}
     })
   
-    cy.loginUser('user2@mail.com', 'password')
+    cy.anotherLoginUser('user2@mail.com', 'password')
     cy.get('#recipe-1').click({ force: true })
-    cy.get('[class="ui rating"]').within(() => {
+    cy.get('#rate-recipe').within(() => {
       cy.get('[aria-posinset="5"]').click()
     })
     cy.get('#response-message').should('contain', 'You gave this recipe 5 stars!')

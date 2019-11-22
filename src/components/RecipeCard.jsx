@@ -22,7 +22,7 @@ const RecipeCard = props => {
       userRating = recipe.user_rating ? <p>You rated this recipe with {recipe.user_rating} stars</p> : ''
 
       rateRecipe = (
-        <p>
+        <p id="rate-recipe">
           {userRating}
           Rate the recipe:
           <Rating defaultRating={recipe.user_rating} maxRating={5} onRate={props.submitRecipeRating} />
