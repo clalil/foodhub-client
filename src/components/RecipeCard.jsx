@@ -6,18 +6,30 @@ import '../css/recipe-card.css'
 const RecipeCard = props => {
   let recipe = props.recipe
   let linked = props.linked
-  let addRecipeToFavorites, rateRecipe
+  let addRecipeToFavorites, rateRecipe, averageRating, userRating, ratingParagraph
   if (props.isSignedIn) {
     addRecipeToFavorites = (
       <Button color="olive" name="save-recipe-to-cookbook" onClick={() => props.setRecipeAsFavorite()}>
         <Icon name= 'plus'/> Add this recipe to your favorites
       </Button>
     )
-      debugger
+    userRating = recipe.user_rating ? <p>You rated this recipe with {recipe.user_rating} stars</p> : ''
+      
     rateRecipe = (
-      <Rating defaultRating={recipe.rating} maxRating={5} onRate={props.submitRecipeRating} />
+      <p>
+        {userRating}
+        Rate the recipe:
+        <Rating defaultRating={recipe.user_rating} maxRating={5} onRate={props.submitRecipeRating} />
+      </p>
     )
   }
+
+  averageRating = (
+    <p>
+      This recipe has an average rating of {recipe.rating}
+      <Rating size={large} disabled={true} maxRating={1} defaultRating={1} />
+    </p>
+  )
 
   let parent = props.recipe.parent
   return (
@@ -46,6 +58,7 @@ const RecipeCard = props => {
               )}
             <Divider />
             <Card.Description>
+              {averageRating}
               <p style={{ fontWeight: "bold" }}>Ingredients: </p>
               <p name="recipe-ingredients">{recipe.ingredients}</p>
               <p style={{ fontWeight: "bold" }}>Directions: </p>
