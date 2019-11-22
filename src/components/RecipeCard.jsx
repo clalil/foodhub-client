@@ -77,24 +77,21 @@ const RecipeCard = props => {
                   </Card.Header>
                   <Divider />
                   <Card.Content>  
-   
-                <center><p style={{ fontSize: "16px", marginLeft: "1rem", marginBottom: "1rem" }}>{averageRating}{rateRecipe}</p></center>
-                </Card.Content>    
-
+                  <center><p style={{ fontSize: "16px", marginLeft: "1rem", marginBottom: "1rem" }}>{averageRating}{rateRecipe}</p></center>
+                  </Card.Content>    
                   <Card.Description>
-
                     <p style={{ fontWeight: "bold" }}>Ingredients: </p>
                     <p name="recipe-ingredients" style={{ margin: '0' }}>{splitRecipe}</p>
                     <p style={{ fontWeight: "bold" }}>Directions: </p>
                     <p name="recipe-directions">{recipe.directions}</p>
                   </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  {parent ? (
-                    <Link
-                      id={`recipe-${parent.id}`}
-                      to={`/recipe/${parent.id}`}
-                    >
+                  </Card.Content>
+                  <Card.Content extra>
+                    {parent ? (
+                      <Link
+                        id={`recipe-${parent.id}`}
+                        to={`/recipe/${parent.id}`}
+                      >
                       <p name="parent-data">
                         <Icon name='food' size='large' />
                         This recipe was forked from '{parent.title}' by {parent.user_name}
@@ -103,7 +100,6 @@ const RecipeCard = props => {
                     </Link>
                   ) : (<p>Created by {recipe.user_name}</p>)}
                 </Card.Content> 
-               
               </Card>
             </Container>
           )}
