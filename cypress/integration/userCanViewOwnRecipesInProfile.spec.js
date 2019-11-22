@@ -16,9 +16,8 @@ describe('Recipes created by user are displayed in the profile', () => {
         cy.get('#nav-profile').click()
       })
     cy.get('#profile-greeting')
-      .should('contain', 'Hello BettySpaghetti, welcome to your profile page')
+      .should('contain', 'Here are all of the yummy recipes that you have created so far')
     cy.get('[name="recipe-title"]').should('contain', 'Quiche')
-    cy.get('[name="recipe-ingredients"]').should('contain', 'Eggs')
   })
 
   it('Sees message for no recipes', () => {

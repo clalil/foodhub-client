@@ -40,11 +40,12 @@ const fetchCurrentUsersRecipes = async () => {
   return response.data.recipes
 }
 
-const submitRecipe = async (title, ingredients, directions, image) => {
+const submitRecipe = async (title, description, ingredients, directions, image) => {
   try {
     let encodedImage, recipeParams
     recipeParams = {
       title: title,
+      description: description,
       ingredients: ingredients,
       directions: directions
     }
@@ -73,11 +74,12 @@ const submitRecipe = async (title, ingredients, directions, image) => {
   }
 }
 
-const editRecipe = async (title, ingredients, directions, image, recipeId) => {
+const editRecipe = async (title, description, ingredients, directions, image, recipeId) => {
   try {
     let encodedImage, recipeParams
     recipeParams = {
       title: title,
+      description: description,
       ingredients: ingredients,
       directions: directions
     }
@@ -106,11 +108,12 @@ const editRecipe = async (title, ingredients, directions, image, recipeId) => {
   }
 }
 
-const forkRecipe = async (title, ingredients, directions, image, recipeId) => {
+const forkRecipe = async (title, description, ingredients, directions, image, recipeId) => {
   try {
     let encodedImage, recipeParams
     recipeParams = {
       title: title,
+      description: description,
       ingredients: ingredients,
       directions: directions
     }
@@ -128,9 +131,9 @@ const forkRecipe = async (title, ingredients, directions, image, recipeId) => {
         headers: getCurrentCredentials()
       }
     )
-
     return {
-      message: response.data.message,
+      recipeId : response.data.forked_recipe_id,
+      message: response.data.message
     }
   } catch(error) {
     return {
@@ -141,7 +144,11 @@ const forkRecipe = async (title, ingredients, directions, image, recipeId) => {
 
 const getSingleRecipe = async (recipeId) => {
   try {
-    let response = await axios.get(apiUrl + `recipes/${recipeId}`)
+    let response = await axios.get(apiUrl + `recipes/${recipeId}`,
+      {
+        headers: getCurrentCredentials()
+      }
+    )
     return {
       recipe: response.data.recipe
     }

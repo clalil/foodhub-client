@@ -20,6 +20,7 @@ describe('User forks a recipe', () => {
     cy.get('[name="fork-recipe"]').click()
     cy.get('#fork-recipe-form').within(() => {
       cy.get('[name="title"]').type('Apple Pie')
+        .get('[name="description"]').type('Recipe given by my mama')
         .get('[name="ingredients"]').type('Apples, dough')
         .get('[name="directions"]').type('Bake pie at 200')
       const fileName = 'pizza.jpeg';

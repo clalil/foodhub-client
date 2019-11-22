@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Login from './Login'
 import Logout from './Logout'
 import Search from './Search'
+import { HashLink as Link } from 'react-router-hash-link';
 
 class Navbar extends Component {
   state = { visibleSidebar: false, modalOpen: false }
@@ -23,7 +24,7 @@ class Navbar extends Component {
 
   render() {
     const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 }
-    let logOut, logIn, welcomeMessage, createRecipe, cookbook, userProfile, search
+    let logOut, logIn, welcomeMessage, createRecipe, aboutUs, cookbook, userProfile, search, viewAll
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = (
@@ -58,11 +59,18 @@ class Navbar extends Component {
       userProfile = (
         <Menu.Item id='nav-profile' as={NavLink} to='/profile'>
           <Header position='right'>
-            My Profile
+            My Recipes
           </Header>
         </Menu.Item>
       )
     } else {
+      aboutUs = (
+        <Menu.Item id='nav-create' as={NavLink} to='/about'>
+          <Header position='right'>
+            About Us
+          </Header>
+        </Menu.Item>
+      )
       logIn = (
         <Menu.Item id='nav-login' className='fake-link-hover'>
           <Header
@@ -75,6 +83,17 @@ class Navbar extends Component {
             handleModalOpen={this.handleModalOpen}
           />
         </Menu.Item>
+      )
+      viewAll = (
+        <Menu.Item>
+        <Link
+          to="/#view-all-recipes"
+          activeClassName="selected">
+          <Header position='right'>
+            View All Recipes
+          </Header>
+        </Link>
+      </Menu.Item>
       )
     }
 
@@ -127,7 +146,9 @@ class Navbar extends Component {
                 <Icon name='food' size='large' />
               </Menu.Item>
               {welcomeMessage}
+              {viewAll}
               {createRecipe}
+              {aboutUs}
               {cookbook}
               {logIn}
               {search}
@@ -151,6 +172,8 @@ class Navbar extends Component {
             <Menu.Menu position='right'>
             {welcomeMessage}
             {createRecipe}
+            {viewAll}
+            {aboutUs}
             {cookbook}
             {search}
             {logIn}

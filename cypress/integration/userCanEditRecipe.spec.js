@@ -21,6 +21,7 @@ describe('User edits recipe', () => {
     cy.get('[name="edit-recipe"]').click()
     cy.get('#edit-recipe-form').within(() => {
       cy.get('[name="title"]').type('Apple Pie')
+        .get('[name="description"]').type('Recipe given by my mama')
         .get('[name="ingredients"]').type('Apples, dough')
         .get('[name="directions"]').type('Bake pie at 200')
       const fileName = 'pizza.jpeg';

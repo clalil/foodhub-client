@@ -4,12 +4,14 @@
     {
       "id": 1,  
       "title": "Quiche", 
+      "description": "I used to love this recipe as a child!",
       "ingredients": "Eggs", 
       "directions": "Stir the mixture"
     },
     {
       "id": 2,
       "title": "Chocolate Croissant", 
+      "description": "My nanas recipe from 1923!",
       "ingredients": "Creme", 
       "directions": "Bake in the oven"
     } 

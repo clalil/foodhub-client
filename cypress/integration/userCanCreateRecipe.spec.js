@@ -16,6 +16,7 @@ describe('Creates a recipe', () => {
     })
     cy.get('#create-recipe-form').within(() => {
       cy.get('[name="title"]').type('Warm Apples')
+        .get('[name="description"]').type('Recipe given by my mama')
         .get('[name="ingredients"]').type('Apples, syrup')
         .get('[name="directions"]').type('Add syrup to apples. Heat in microwave.')
       cy.fixture(fileName).then(fileContent => {

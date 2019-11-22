@@ -11,6 +11,7 @@ import Cookbook from './components/Cookbook'
 import { generateRequireSignInWrapper } from 'redux-token-auth'
 import { connect } from 'react-redux'
 import SignUp from './components/SignUp'
+import AboutUs from './components/AboutUs'
 import UserProfile from './components/UserProfile'
 import Search from './components/Search'
 
@@ -37,6 +38,7 @@ class App extends Component {
             {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
           </Route>
           <Route exact path="/recipes/create" component={requireSignIn(RecipeCU)} />
+          <Route exact path='/about' component={AboutUs} />
           <Route exact path="/cookbook" component={requireSignIn(Cookbook)} />
           <Route exact path="/profile" component={requireSignIn(UserProfile)} />
       </>
