@@ -41,7 +41,6 @@ const fetchCookbookPdf = async () => {
 
 const submitRating = async (recipeId, rating) => {
   try {
-    debugger;
     let response = await axios.post(apiUrl + `recipes/${recipeId}/rating`, 
       {
         score: rating
@@ -52,8 +51,6 @@ const submitRating = async (recipeId, rating) => {
     )
     return response
   } catch(error) {
-    debugger;
-
     return {
       error: error.response.data.error_message
     }

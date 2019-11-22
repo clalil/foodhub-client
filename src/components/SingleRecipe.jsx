@@ -61,12 +61,11 @@ class SingleRecipe extends Component {
     let response = await submitRating(this.state.recipe.id, rating)
 
     if (response.status === 201) {
-      debugger;
       this.setState({
         message: `You gave this recipe ${rating} stars!`
       })
+      this.fetchRecipe()
     } else {
-      debugger;
       this.setState({
         message: response.error,
         error: true

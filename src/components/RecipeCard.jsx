@@ -13,8 +13,9 @@ const RecipeCard = props => {
         <Icon name= 'plus'/> Add this recipe to your favorites
       </Button>
     )
+      debugger
     rateRecipe = (
-      <Rating maxRating={5} onRate={props.submitRecipeRating} />
+      <Rating defaultRating={recipe.rating} maxRating={5} onRate={props.submitRecipeRating} />
     )
   }
 
