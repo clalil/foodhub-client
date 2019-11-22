@@ -4,7 +4,7 @@ import ListRecipes from '../components/ListRecipes';
 import { MemoryRouter } from 'react-router'
 
 describe('<ListRecipes />', () => {
-  it('display list of recipes', () => {
+  xit('display list of recipes', () => {
     const describedComponent = mount(
       <MemoryRouter initialEntries={['/']}>
         <ListRecipes />
