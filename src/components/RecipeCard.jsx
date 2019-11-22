@@ -14,7 +14,8 @@ const RecipeCard = props => {
       </Button>
     )
     userRating = recipe.user_rating ? <p>You rated this recipe with {recipe.user_rating} stars</p> : ''
-      
+    // ratingParagraph =  recipe.user_rating ?  
+    debugger
     rateRecipe = (
       <p>
         {userRating}
@@ -27,7 +28,7 @@ const RecipeCard = props => {
   averageRating = (
     <p>
       This recipe has an average rating of {recipe.rating}
-      <Rating size={large} disabled={true} maxRating={1} defaultRating={1} />
+      <Rating size={'large'} disabled={true} maxRating={1} defaultRating={1} />
     </p>
   )
 

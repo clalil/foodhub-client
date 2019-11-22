@@ -125,7 +125,11 @@ const forkRecipe = async (title, ingredients, directions, image, recipeId) => {
 
 const getSingleRecipe = async (recipeId) => {
   try {
-    let response = await axios.get(apiUrl + `recipes/${recipeId}`)
+    let response = await axios.get(apiUrl + `recipes/${recipeId}`,
+      {
+        headers: getCurrentCredentials()
+      }
+    )
     return {
       recipe: response.data.recipe
     }
