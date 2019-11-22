@@ -24,11 +24,12 @@ const fetchCurrentUsersRecipes = async () => {
   return response.data.recipes
 }
 
-const submitRecipe = async (title, ingredients, directions, image) => {
+const submitRecipe = async (title, description, ingredients, directions, image) => {
   try {
     let encodedImage, recipeParams
     recipeParams = {
       title: title,
+      description: description,
       ingredients: ingredients,
       directions: directions
     }

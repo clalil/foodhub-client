@@ -13,12 +13,13 @@ class RecipeCU extends Component {
   submitRecipeHandler = async event => {
     event.preventDefault()
     const { history } = this.props
-    let { title, directions, ingredients, image } = event.target
+    let { title, description, directions, ingredients, image } = event.target
     let response
 
     if (this.props.edit) {
       response = await editRecipe(
         title.value,
+        description.value,
         ingredients.value,
         directions.value,
         image.files[0],
@@ -28,6 +29,7 @@ class RecipeCU extends Component {
     } else if (this.props.fork) {
       response = await forkRecipe(
         title.value,
+        description.value,
         ingredients.value,
         directions.value,
         image.files[0],
@@ -37,11 +39,12 @@ class RecipeCU extends Component {
     } else {
       response = await submitRecipe(
         title.value,
+        description.value,
         ingredients.value,
         directions.value,
         image.files[0],
-        setTimeout(() => { history.push('/') }, 3000)
       )
+      setTimeout(() => { history.push('/') }, 3000)
     }
 
     if (response.message) {
