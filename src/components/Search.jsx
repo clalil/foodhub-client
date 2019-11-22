@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Input, Icon, Button } from 'semantic-ui-react'
-import "../css/search-recipe.css"
+import { Menu, Input, Button } from 'semantic-ui-react'
 import { withRouter } from "react-router"
 import { searchRecipes } from "../modules/requestRecipes"
 

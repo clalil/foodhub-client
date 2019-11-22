@@ -9,7 +9,8 @@ const RecipeCard = props => {
   let currentUser = props.currentUser
   let addRecipeToFavorites, rateRecipe, averageRating, userRating
   let parent = props.recipe.parent
-  let splitRecipe = recipe.ingredients.split(',').map((ingredient, index) => <List style={{ margin: '0' }}key={index}>{ingredient}</List>)
+  let splitIngredients = recipe.ingredients.split(',').map((ingredient, index) => <List style={{ margin: '0' }}key={index}>{ingredient}</List>)
+  let splitDirections = recipe.directions.split(',').map((direction, index) => <List style={{ margin: '0' }}key={index}>{direction}</List>)
 
   if (currentUser.isSignedIn) {
     addRecipeToFavorites = (
@@ -83,9 +84,9 @@ const RecipeCard = props => {
                     <p style={{ fontWeight: "bold", margin: '0' }}>Description: </p>
                     <p name="recipe-description">{recipe.description}</p>
                     <p style={{ fontWeight: "bold", margin: '0' }}>Ingredients: </p>
-                    <p name="recipe-ingredients">{splitRecipe}</p>
+                    <p name="recipe-ingredients">{splitIngredients}</p>
                     <p style={{ fontWeight: "bold", margin: '0' }}>Directions: </p>
-                    <p name="recipe-directions">{recipe.directions}</p>
+                    <p name="recipe-directions">{splitDirections}</p>
                   </Card.Description>
                   </Card.Content>
                   <Card.Content extra>

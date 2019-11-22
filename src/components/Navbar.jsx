@@ -96,7 +96,6 @@ class Navbar extends Component {
       </Menu.Item>
       )
     }
-
     search = (
       <Menu.Item id='nav-search' className='fake-link-hover'>
         <Search
@@ -151,9 +150,9 @@ class Navbar extends Component {
               {aboutUs}
               {cookbook}
               {logIn}
-              {search}
               {userProfile}
               {logOut}
+              {search}
             </Menu.Menu>
           </Sidebar>
         </Responsive>
@@ -175,10 +174,10 @@ class Navbar extends Component {
             {viewAll}
             {aboutUs}
             {cookbook}
-            {search}
             {logIn}
             {userProfile}
             {logOut}
+            {search}
             </Menu.Menu>
           </Menu>
         </Responsive >
