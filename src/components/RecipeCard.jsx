@@ -24,8 +24,8 @@ const RecipeCard = props => {
       rateRecipe = (
         <p id="rate-recipe">
           {userRating}
-          Rate the recipe:
-          <Rating defaultRating={recipe.user_rating} maxRating={5} onRate={props.submitRecipeRating} />
+          Rate this recipe:
+          <Rating icon='star' defaultRating={recipe.user_rating} maxRating={5} onRate={props.submitRecipeRating} />
         </p>
       )
     }
@@ -35,7 +35,7 @@ const RecipeCard = props => {
     averageRating = (
       <p>
         This recipe has an average rating of {recipe.rating}
-        <Rating size={'large'} disabled={true} maxRating={1} defaultRating={1} />
+        <Rating icon='star' size={'large'} disabled={true} maxRating={1} defaultRating={1} />
       </p>
     )
   }
