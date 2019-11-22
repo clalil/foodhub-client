@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Login from './Login'
 import Logout from './Logout'
+import { HashLink as Link } from 'react-router-hash-link';
 
 class Navbar extends Component {
   state = { visibleSidebar: false, modalOpen: false }
@@ -22,7 +23,8 @@ class Navbar extends Component {
 
   render() {
     const notMobile = { minWidth: Responsive.onlyMobile.maxWidth + 1 }
-    let logOut, logIn, welcomeMessage, createRecipe, aboutUs, userProfile, cookbook
+    let logOut, logIn, welcomeMessage, createRecipe, aboutUs, userProfile, cookbook, viewAll
+
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = (
@@ -57,7 +59,7 @@ class Navbar extends Component {
       userProfile = (
         <Menu.Item id='nav-profile' as={NavLink} to='/profile'>
           <Header position='right'>
-            My Profile
+            My Recipes
           </Header>
         </Menu.Item>
       )
@@ -81,6 +83,17 @@ class Navbar extends Component {
             handleModalOpen={this.handleModalOpen}
           />
         </Menu.Item>
+      )
+      viewAll = (
+        <Menu.Item>
+        <Link
+          to="/#view-all-recipes"
+          activeClassName="selected">
+          <Header position='right'>
+            View All Recipes
+          </Header>
+        </Link>
+      </Menu.Item>
       )
     }
 
@@ -124,6 +137,7 @@ class Navbar extends Component {
                 <Icon name='food' size='large' />
               </Menu.Item>
               {welcomeMessage}
+              {viewAll}
               {createRecipe}
               {aboutUs}
               {cookbook}
@@ -148,6 +162,7 @@ class Navbar extends Component {
             <Menu.Menu position='right'>
             {welcomeMessage}
             {createRecipe}
+            {viewAll}
             {aboutUs}
             {cookbook}
             {logIn}
