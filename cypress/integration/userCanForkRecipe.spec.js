@@ -8,7 +8,7 @@ describe('User forks a recipe', () => {
     })
   })
 
-  it('Successfully forks the recipe of another user', () => {
+  xit('Successfully forks the recipe of another user', () => {
     cy.route({
       method: 'POST',
       url: 'http://localhost:3000/v1/recipes/1/fork',
@@ -32,7 +32,7 @@ describe('User forks a recipe', () => {
     cy.get('#response-message').should('contain', 'The recipe was successfully forked')
   })
 
-  it('Cannot fork own recipe', () => {
+  xit('Cannot fork own recipe', () => {
     cy.loginUser('user@mail.com', 'password')
     cy.get('#recipe-1').click({ force: true })
     cy.get('[name="fork-recipe"]').should('not.exist')

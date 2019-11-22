@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import { getSingleRecipe } from '../modules/requestRecipes'
 import { submitFavorite, submitRating } from '../modules/requestFavorites'
 import '../css/single-recipe.css'
@@ -13,23 +13,23 @@ class SingleRecipe extends Component {
   state = {
     recipe: null,
     message: null,
-    error: false, 
+    error: false,
     renderEditForm: false,
     renderForkForm: false
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.fetchRecipe()
+      this.fetchRecipe(this.props.match.params.id)
     }
   }
 
   componentDidMount() {
-    this.fetchRecipe()
+    this.fetchRecipe(this.props.match.params.id)
   }
 
-  fetchRecipe = async() => {
-    let response = await getSingleRecipe(this.props.match.params.id)
+  fetchRecipe = async (recipeId) => {
+    let response = await getSingleRecipe(recipeId)
     if (response.recipe) {
       this.setState({
         recipe: response.recipe
@@ -85,32 +85,48 @@ class SingleRecipe extends Component {
     })
   }
 
+  closeEditForm = () => {
+    this.setState({
+      renderEditForm: false
+    })
+    this.fetchRecipe()
+  }
+
+  closeForkForm = (recipeId) => {
+    this.setState({
+      renderForkForm: false
+    })
+    this.fetchRecipe(recipeId)
+  }
+
   render() {
     let { recipe, message, error } = this.state
     let showSingleRecipe, messages, edit, fork
 
-    if(message) {
+    if (message) {
       messages = (
-        <AlertMessage 
+        <AlertMessage
           message={message}
           error={error}
         />
       )
     }
-    
+    debugger
     if (recipe) {
-      if (this.props.currentUser.attributes.id === recipe.user_id) {
-        edit = this.state.renderEditForm ?
-          <RecipeCU edit recipe={recipe} />
-          :
-          <Button name="edit-recipe" onClick={this.renderEditForm}>Edit Recipe</Button>
-      }
-      if (this.props.currentUser.attributes.id !== recipe.user_id) {
-        fork = this.state.renderForkForm ?
-          <RecipeCU fork recipe={recipe} />
-          :
-          <Button name="fork-recipe" onClick={this.renderForkForm}>Fork Recipe</Button>
-      }
+      if (this.props.currentUser.isSignedIn) {
+        if (this.props.currentUser.attributes.id === recipe.user_id) {
+          edit = this.state.renderEditForm ?
+            <RecipeCU edit closeEditForm={this.closeEditForm} recipe={recipe} />
+            :
+            <Button color='teal' name="edit-recipe" onClick={this.renderEditForm}><Icon name='edit' /> Edit this recipe</Button>
+        }
+        if (this.props.currentUser.attributes.id !== recipe.user_id) {
+          fork = this.state.renderForkForm ?
+            <RecipeCU fork closeForkForm={this.closeForkForm} recipe={recipe} />
+            :
+            <Button color='teal' name="fork-recipe" onClick={this.renderForkForm}><Icon name='plus' /> Fork this recipe</Button>
+        }
+      }   
 
       showSingleRecipe = (
         <RecipeCard
@@ -127,10 +143,14 @@ class SingleRecipe extends Component {
     }
 
     return (
-      <>
-        {messages}
-        {showSingleRecipe}
-      </>
+      <div id="test">
+        <div>
+          {messages}
+        </div>
+        <div className="single-card-bg" style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+          {showSingleRecipe}
+        </div>
+      </div>
     )
   }
 }
