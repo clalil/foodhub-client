@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Menu, Input, Icon } from 'semantic-ui-react'
+import { Menu, Input, Icon, Button } from 'semantic-ui-react'
 import "../css/search-recipe.css"
 import { withRouter } from "react-router"
 import { searchRecipes } from "../modules/requestRecipes"
-import { Message, Header, Grid } from "semantic-ui-react"
 
-  
+
 class Search extends Component {
   state = {
     searchRecipes: [],
@@ -37,7 +36,7 @@ class Search extends Component {
           pathname: '/',
           state: { queryResponse: response },
           search: 'search'
-        })      
+        })
       }
     }
   }
@@ -52,17 +51,20 @@ class Search extends Component {
     search = (
       <Menu.Item id="nav-search">
         <Input
+          icon="search"
           title="search-input"
           id="search-input"
-          placeholder="Search..."
+          placeholder="Search for a recipe..."
           name="query"
           onChange={this.inputChangeHandler}
         />
-        <Icon
+        <Button
           id="search-submit"
           name="search"
           onClick={this.getSearchRecipes}
-        />
+        >
+          Search
+        </Button>
       </Menu.Item>
     )
 

@@ -80,11 +80,6 @@ class Navbar extends Component {
 
     search = (
       <Menu.Item id='nav-search' className='fake-link-hover'>
-        <Header
-          position='right'
-          onClick={this.handleModalOpen}>
-          Search
-        </Header>
         <Search
           modalOpen={this.state.modalOpen}
           handleModalOpen={this.handleModalOpen}
