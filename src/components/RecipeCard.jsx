@@ -10,28 +10,35 @@ const RecipeCard = props => {
   let parent = props.recipe.parent
   let splitRecipe = recipe.ingredients.split(',').map((ingredient, index) => <List key={index}>{ingredient}</List>)
 
-  if (props.isSignedIn) {
+  if (props.currentUser.isSignedIn) {
     addRecipeToFavorites = (
       <Button color="olive" name="save-recipe-to-cookbook" onClick={() => props.setRecipeAsFavorite()}>
         <Icon name='plus' /> Add recipe to cookbook as a favorite
       </Button>
     )
-    userRating = recipe.user_rating ? <p>You rated this recipe with {recipe.user_rating} stars</p> : ''
-    rateRecipe = (
+
+    if (recipe.user_id !== props.currentUser.attributes.id) {
+      userRating = recipe.user_rating ? <p>You rated this recipe with {recipe.user_rating} stars</p> : ''
+
+      rateRecipe = (
+        <p>
+          {userRating}
+          Rate the recipe:
+          <Rating defaultRating={recipe.user_rating} maxRating={5} onRate={props.submitRecipeRating} />
+        </p>
+      )
+    }
+    
+  }
+  if (recipe.rating) {
+    averageRating = (
       <p>
-        {userRating}
-        Rate the recipe:
-        <Rating defaultRating={recipe.user_rating} maxRating={5} onRate={props.submitRecipeRating} />
+        This recipe has an average rating of {recipe.rating}
+        <Rating size={'large'} disabled={true} maxRating={1} defaultRating={1} />
       </p>
     )
   }
-
-  averageRating = (
-    <p>
-      This recipe has an average rating of {recipe.rating}
-      <Rating size={'large'} disabled={true} maxRating={1} defaultRating={1} />
-    </p>
-  )
+  
 
   return (
     <>

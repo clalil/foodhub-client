@@ -29,7 +29,7 @@ class SingleRecipe extends Component {
   }
 
   fetchRecipe = async (recipeId) => {
-    let response = await getSingleRecipe(recipeId)
+    let response = await getSingleRecipe(parseInt(recipeId))
     if (response.recipe) {
       this.setState({
         recipe: response.recipe
@@ -64,7 +64,7 @@ class SingleRecipe extends Component {
       this.setState({
         message: `You gave this recipe ${rating} stars!`
       })
-      this.fetchRecipe()
+      this.fetchRecipe(this.state.recipe.id)
     } else {
       this.setState({
         message: response.error,
@@ -96,6 +96,7 @@ class SingleRecipe extends Component {
     this.setState({
       renderForkForm: false
     })
+
     this.fetchRecipe(recipeId)
   }
 
@@ -134,7 +135,7 @@ class SingleRecipe extends Component {
           linked={false}
           setRecipeAsFavorite={this.submitRecipeAsFavorite}
           submitRecipeRating={this.submitRecipeRating}
-          isSignedIn={this.props.currentUser.isSignedIn}
+          currentUser={this.props.currentUser}
         >
           {edit}
           {fork}
