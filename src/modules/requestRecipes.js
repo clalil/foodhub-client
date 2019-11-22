@@ -26,7 +26,7 @@ const searchRecipes = async (query) => {
     return response.data.recipes
   } catch(error) {
     return {
-      errorMessage: error.response.message
+      errorMessage: error.response.data.message
     }
   }
 }

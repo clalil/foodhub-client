@@ -15,11 +15,9 @@ class ListRecipes extends Component {
   }
 
   checkCurrentRecipesForQuery = () => {
-    if (this.props.location.state !== undefined) {
-      if (this.props.location.state.queryResponse !== undefined) {
-        if (this.props.location.state.queryResponse !== this.state.recipes) {
-          this.setRecipes(this.props.location.state.queryResponse)
-        }
+    if (this.props.location.search == '?from_search') {
+      if (this.props.location.state.queryResponse !== this.state.recipes) {
+        this.setRecipes(this.props.location.state.queryResponse)
       }
     }
   }

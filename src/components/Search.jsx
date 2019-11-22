@@ -22,13 +22,12 @@ class Search extends Component {
   getSearchRecipes = async () => {
     const { history } = this.props
     const { query } = this.state
-    if (query.length < 1) {
+    if (query.length <= 2) {
       this.setState({
         errorMessage: 'Please input more than two characters.'
       })
     } else {
       let response = await searchRecipes(query)
-
       if (response.errorMessage) {
         this.setState({
           errorMessage: response.errorMessage
@@ -37,7 +36,7 @@ class Search extends Component {
         history.push({
           pathname: '/',
           state: { queryResponse: response },
-          search: 'from_search'
+          search: 'search'
         })      
       }
     }
