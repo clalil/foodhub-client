@@ -22,9 +22,6 @@ This application consists of a front-end Client and a back-end API.
 Our team worked agile over the two week timeline using 7 day sprints beginning with a two-day design sprint. For more information, please read our user stories and our features on our [Pivotal Tracker board](https://www.pivotaltracker.com/n/projects/2417177). 
 
 ---
-## Snapshot of the application
-
----
 ## Getting Started
 If you want to try out the code for yourself on your local machine:
 Fork the repo, clone it down, make sure you run `yarn install`. 
