@@ -6,11 +6,12 @@ import '../css/recipe-card.css'
 const RecipeCard = props => {
   let recipe = props.recipe
   let linked = props.linked
+  let currentUser = props.currentUser
   let addRecipeToFavorites, rateRecipe, averageRating, userRating
   let parent = props.recipe.parent
   let splitRecipe = recipe.ingredients.split(',').map((ingredient, index) => <List key={index}>{ingredient}</List>)
 
-  if (props.currentUser.isSignedIn) {
+  if (currentUser.isSignedIn) {
     addRecipeToFavorites = (
       <Button color="olive" name="save-recipe-to-cookbook" onClick={() => props.setRecipeAsFavorite()}>
         <Icon name='plus' /> Add recipe to cookbook as a favorite
@@ -75,8 +76,13 @@ const RecipeCard = props => {
                     {recipe.title}
                   </Card.Header>
                   <Divider />
+                  <Card.Content>  
+   
+                <center><p style={{ fontSize: "16px", marginLeft: "1rem", marginBottom: "1rem" }}>{averageRating}{rateRecipe}</p></center>
+                </Card.Content>    
+
                   <Card.Description>
-                    {averageRating}
+
                     <p style={{ fontWeight: "bold" }}>Ingredients: </p>
                     <p name="recipe-ingredients" style={{ margin: '0' }}>{splitRecipe}</p>
                     <p style={{ fontWeight: "bold" }}>Directions: </p>
@@ -96,8 +102,8 @@ const RecipeCard = props => {
                       <p>Forked by {recipe.user_name}</p>
                     </Link>
                   ) : (<p>Created by {recipe.user_name}</p>)}
-                </Card.Content>
-                {rateRecipe}
+                </Card.Content> 
+               
               </Card>
             </Container>
           )}
