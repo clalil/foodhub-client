@@ -9,7 +9,7 @@ const RecipeCard = props => {
   let currentUser = props.currentUser
   let addRecipeToFavorites, rateRecipe, averageRating, userRating
   let parent = props.recipe.parent
-  let splitRecipe = recipe.ingredients.split(',').map((ingredient, index) => <List key={index}>{ingredient}</List>)
+  let splitRecipe = recipe.ingredients.split(',').map((ingredient, index) => <List style={{ margin: '0' }}key={index}>{ingredient}</List>)
 
   if (currentUser.isSignedIn) {
     addRecipeToFavorites = (
@@ -98,7 +98,6 @@ const RecipeCard = props => {
                         <Icon name='food' size='large' />
                         This recipe was forked from '{parent.title}' by {parent.user_name}
                       </p>
-                      <p>Forked by {recipe.user_name}</p>
                     </Link>
                   ) : (<p>Created by {recipe.user_name}</p>)}
                 </Card.Content> 
