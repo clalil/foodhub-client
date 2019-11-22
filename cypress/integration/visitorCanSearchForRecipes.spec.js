@@ -15,15 +15,15 @@ describe('Visitor can search for recipe', () => {
   beforeEach(() => {
     cy.server()
     cy.route({
-      method: 'GET',
-      url: 'http://localhost:3000/v1/recipes',
+      method: 'POST',
+      url: 'http://localhost:3000/v1/search',
       response: '{"recipes":[]}'
     })
     cy.visit('http://localhost:3001')
   })
 
   it('sees message for no recipes available', () => {
-    cy.get("#message").should('contain', 'There are no recipes available')
+    cy.get("#message").should('contain', 'Your search yielded no results')
   })
 })
 })

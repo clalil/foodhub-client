@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Menu, Input, Icon } from 'semantic-ui-react'
+import "../css/search-recipe.css"
 import { Link } from "react-router-dom"
 import { fetchRecipes } from "../modules/requestRecipes"
 import { Message, Header, Grid } from "semantic-ui-react"
@@ -7,9 +8,9 @@ import { Message, Header, Grid } from "semantic-ui-react"
   
 class Search extends Component {
   state = {
-    query: "",
-    errorMessage: "",
-    searchRecipes: []
+    searchRecipes: [],
+    q: "",
+    message: null,
   }
 
   inputChangeHandler = e => {
@@ -19,8 +20,8 @@ class Search extends Component {
   }
 
   getSearchRecipes = async () => {
-    const { query } = this.state
-    if (query.length < 1) {
+    const { q } = this.state
+    if (q.length < 1) {
       this.setState({
         errorMessage: 'Please input more than two characters.'
       })

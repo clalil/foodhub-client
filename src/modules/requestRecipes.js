@@ -16,8 +16,12 @@ const fetchRecipes = async () => {
 }
 
 const searchRecipes = async (query) => {
+  let recipeParams
   try {
     let response = await axios.get(apiUrl + 'recipes')
+    recipeParams = {
+      q: query
+    }
     return response.data
   } catch(error) {
     return error.response
