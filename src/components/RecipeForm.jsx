@@ -99,7 +99,6 @@ const RecipeForm = props => {
           <Button
             style={{ marginTop: '0.8rem' }}
             color='red'
-            fluid size='large'
             as={Link}
             name='cancel'
             to='/'
