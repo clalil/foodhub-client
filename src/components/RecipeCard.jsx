@@ -13,9 +13,9 @@ const RecipeCard = props => {
   let splitDirections = recipe.directions.split(',').map((direction, index) => <List style={{ margin: '0' }}key={index}>{direction}</List>)
 
   if (currentUser.isSignedIn) {
-    addRecipeToFavorites = (
+    addRecipeToFavorites = recipe.added_to_user_cookbook ? <p> You have added this recipe to your Cookbook</p> : (
       <Button color="olive" name="save-recipe-to-cookbook" onClick={() => props.setRecipeAsFavorite()}>
-        <Icon name='plus' /> Add recipe to cookbook as a favorite
+        <Icon name='plus' /> Add recipe to Cookbook as a favorite
       </Button>
     )
 

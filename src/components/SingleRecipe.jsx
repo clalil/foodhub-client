@@ -49,6 +49,7 @@ class SingleRecipe extends Component {
       this.setState({
         message: response.message
       })
+      this.fetchRecipe(this.state.recipe.id)
     } else {
       this.setState({
         message: response.error,
