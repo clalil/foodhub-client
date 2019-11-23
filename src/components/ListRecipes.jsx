@@ -12,27 +12,36 @@ class ListRecipes extends Component {
     currentQuery: ''
   }
 
-  componentDidUpdate() {
-    this.checkCurrentRecipesForQuery()
+  componentDidUpdate(prevProps, newProps) {
+    this.checkCurrentRecipesForQuery(prevProps, newProps)
   }
 
-  checkCurrentRecipesForQuery = () => {
+  checkCurrentRecipesForQuery = (prevProps, newProps) => {
     if (this.props.location.search == '?search') {
-
       if (this.props.location.state.queryResponse !== this.state.recipes) {
         this.setRecipes(this.props.location.state.queryResponse)
       }
       if (this.props.location.state.message && this.state.currentQuery != this.props.location.state.query) {
-        debugger;
         this.setState({
           message: `${this.props.location.state.message} for ${this.props.location.state.query}`,
           currentQuery: this.props.location.state.query
         })
       }
     }
+    if (prevProps.location.hash != this.props.location.hash) {
+      this.getRecipes()
+      this.setState({
+        message: null,
+        currentQuery: ''
+      })
+    }
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.getRecipes()
+  }
+
+  getRecipes = async () => {
     let response = await fetchRecipes()
     if (response.length > 0) {
       this.setRecipes(response)

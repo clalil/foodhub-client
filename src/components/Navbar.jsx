@@ -84,18 +84,19 @@ class Navbar extends Component {
           />
         </Menu.Item>
       )
-      viewAll = (
-        <Menu.Item>
-        <Link
-          to="/#view-all-recipes"
-          activeClassName="selected">
-          <Header position='right'>
-            View All Recipes
-          </Header>
-        </Link>
-      </Menu.Item>
-      )
     }
+    viewAll = (
+      <Menu.Item>
+      <Link
+        to="/#view-all-recipes"
+        activeClassName="selected">
+        <Header position='right'>
+          View All Recipes
+        </Header>
+      </Link>
+    </Menu.Item>
+    )
+    
     search = (
       <Menu.Item id='nav-search' className='fake-link-hover'>
         <Search

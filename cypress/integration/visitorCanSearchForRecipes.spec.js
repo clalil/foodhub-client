@@ -50,7 +50,7 @@ describe('Visitor can search for recipe', () => {
         cy.get('#search-submit').click()
       })
     })
-    cy.get("#search-error").should('contain', 'Your search yielded no results')
+    cy.get("#search-error").should('contain', 'Your search yielded no results for Shrimp')
   })
 
   it('unsuccessfully, query to short', () => {
