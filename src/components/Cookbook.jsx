@@ -64,7 +64,7 @@ class Cookbook extends Component {
         <Container textAlign='center'>
           <Button
             name="create-pdf"
-            color='teal'
+            color='green'
             onClick={() => this.submitPdfRequest()}
           >
             Generate cookbook

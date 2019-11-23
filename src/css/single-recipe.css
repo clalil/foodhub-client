@@ -24,3 +24,7 @@
   background-color: #fff;
   z-index: -1;
 }
+
+.ui.olive.button {
+  margin-left: 5rem;
+}
