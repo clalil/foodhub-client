@@ -136,7 +136,7 @@ const AboutUs = () => {
                 <Card.Meta>Junior Developer</Card.Meta>
                 <Card.Description>
                   The Jacklyn of ALL TRADES! This lady has done everything from property management to working as a dive master in Honduras(Yes, a dream! 
-                  She's done over 100 dives!!! What?!)! Yasmine is a world traveler who made a career shift from travel agent to junior backend developer! 
+                  She's done shark dives in Fiji!!! What?!)! Yasmine is a world traveler who made a career shift from travel agent to junior backend developer! 
                 </Card.Description>
               </Card.Content>
             </Card>     
