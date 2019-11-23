@@ -1,6 +1,6 @@
 import React, { Component } from "react"
-import { Message, Header } from "semantic-ui-react"
-import { submitRecipe, editRecipe } from "../modules/requestRecipes"
+import { submitRecipe, editRecipe, forkRecipe } from "../modules/requestRecipes"
+import { withRouter } from "react-router"
 import RecipeForm from "./RecipeForm"
 import "../css/create-recipe.css"
 
@@ -12,24 +12,39 @@ class RecipeCU extends Component {
 
   submitRecipeHandler = async event => {
     event.preventDefault()
-    let { title, directions, ingredients, image } = event.target
+    const { history } = this.props
+    let { title, description, directions, ingredients, image } = event.target
     let response
 
     if (this.props.edit) {
       response = await editRecipe(
         title.value,
+        description.value,
         ingredients.value,
         directions.value,
         image.files[0],
-        this.props.recipeId
+        this.props.recipe.id
       )
+      setTimeout(() => { this.props.closeEditForm() }, 3000)
+    } else if (this.props.fork) {
+      response = await forkRecipe(
+        title.value,
+        description.value,
+        ingredients.value,
+        directions.value,
+        image.files[0],
+        this.props.recipe.id,
+      )
+      setTimeout(() => { this.props.closeForkForm(response.recipeId)}, 3000)
     } else {
       response = await submitRecipe(
         title.value,
+        description.value,
         ingredients.value,
         directions.value,
-        image.files[0]
+        image.files[0],
       )
+      setTimeout(() => { history.push('/') }, 3000)
     }
 
     if (response.message) {
@@ -45,48 +60,33 @@ class RecipeCU extends Component {
   }
 
   render() {
-    let edit = this.props.edit
-    let header = edit
-      ? "Make some changes to your recipe!"
-      : "Create Your Own Recipe"
-    let subHeader = edit
-      ? "All input fields are mandatory in order to update your recipe."
-      : "All input fields are mandatory in order to submit a recipe."
-    let messages
-    let { message, error } = this.state
-
-    if (message) {
-      messages = (
-        <Message
-          className="create-message"
-          size="small"
-          style={{ color: error ? "red" : "green" }}
-        >
-          <Header
-            as="p"
-            id="response-message"
-            style={{ color: error ? "red" : "green" }}
-          >
-            {message}
-          </Header>
-        </Message>
-      );
+    let version
+    if (this.props.fork) {
+      version = 'fork'
+    } else if (this.props.edit) {
+      version = 'edit'
+    } else {
+      version = 'create'
     }
+    let { edit, fork } = this.props
+    let { message, error } = this.state
+    let messages
 
     return (
-      <div className="create-wrapper">
-        <Header as="h1" className={edit ? "edit-recipe" : "create-recipe"} style={{ textAlign: 'center' }}>
-          {header}
-        </Header>
-        <Header sub>{subHeader}.</Header>
-        {messages}
-        <RecipeForm
-          submitRecipeHandler={this.submitRecipeHandler}
-          edit={edit}
-        />
+      <div className="cu-bg">
+        <div className="create-wrapper">
+          {messages}
+          <RecipeForm
+            submitRecipeHandler={this.submitRecipeHandler}
+            version={version}
+            recipe={edit || fork ? this.props.recipe : false}
+            message={message}
+            error={error}
+          />
+        </div>
       </div>
     );
   }
 }
 
-export default RecipeCU
+export default withRouter(RecipeCU)

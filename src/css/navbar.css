@@ -1,28 +1,27 @@
-#navbar-header {
-  margin: 0.5rem 0 0.5rem 0.5rem !important;
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
-i.huge.icon {
-  margin-bottom: 0.5rem !important;
-  background: -webkit-linear-gradient(#eee, #0f402b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.navbar-links {
-  font-size: '4rem';
-  text-align: 'center';
-  font-family: 'Anton';
-  height: "2.5rem";
-  line-height: "2.5rem";
-  font-weight: 'bold';
-}
-
-a:hover {
+.fake-link-hover:hover {
   cursor: pointer;
+  background: #FCE8CE !important;
 }
 
-a:visited {
-  background: #fff !important;
+.fake-link-hover {
+  font-weight: 900 !important;
 }
 
+.ui.menu .item:hover {
+  background: #FCE8CE !important;
+}
+.ui.menu {
+  background:#FCFCFC !important;
+  border: #FCFCFC !important;
+  margin: 0 !important;
+}
+
+.ui.header {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5rem !important;
+  font-weight: lighter !important;
+  
+}

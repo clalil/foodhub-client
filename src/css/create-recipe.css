@@ -1,16 +1,31 @@
-.create-recipe {
-  text-align: center;
+.cu-bg {
+  background: url('../img/AdobeStock_199252786.jpeg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative; 
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 100vh;
 }
 
-.create-wrapper {
-  margin: 5rem !important;
+.cu-bg:after {
+  position: absolute;
+  content:"";
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  opacity:0.8;
+  background-color: #fff;
+  z-index: -1;
 }
 
 .create-message {
   margin: 1rem 5rem 1rem 5rem !important;
 }
 
-.create-wrapper > .ui.sub.header {
-  text-align: center;
-  font-style: italic;
+.create-wrapper {
+  margin: 1rem 5rem;
 }

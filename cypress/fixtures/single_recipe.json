@@ -3,6 +3,7 @@
     {
       "id": 1,  
       "title": "Quiche", 
+      "description": "My nanas recipe from 1923!",
       "ingredients": "Eggs", 
       "directions": "Stir the mixture",
       "user_id": 1
