@@ -91,7 +91,6 @@ const RecipeForm = props => {
               color='teal'
               type='submit'
               name='submit'
-              fluid size='large'
               style={{ marginTop: '0.8rem' }}
             >
               {buttonText}
