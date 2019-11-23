@@ -92,11 +92,11 @@ class SingleRecipe extends Component {
     this.fetchRecipe(this.state.recipe.id)
   }
 
-  closeForkForm = () => {
+  closeForkForm = (recipeId) => {
     this.setState({
       renderForkForm: false
     })
-    this.fetchRecipe(this.state.recipe.id)
+    this.fetchRecipe(recipeId)
   }
 
   render() {
