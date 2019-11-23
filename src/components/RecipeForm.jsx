@@ -1,5 +1,5 @@
 import React from "react"
-import { Form, Button, Header, Segment } from "semantic-ui-react"
+import { Form, Button, Header, Segment, Container } from "semantic-ui-react"
 import AlertMessage from './AlertMessage'
 import { Link } from 'react-router-dom'
 
@@ -49,6 +49,7 @@ const RecipeForm = props => {
         <Header as="h3" style={{ fontStyle: 'italic', textAlign: 'center' }}>{subHeader}</Header>
         <Segment>
         <div>
+        <Container style={{ textAlign: 'center', padding: '0.5' }}>
           <Form
             id={formId}
             onSubmit={props.submitRecipeHandler}
@@ -64,12 +65,11 @@ const RecipeForm = props => {
               />
             </Form.Group>
             <Form.Group widths="equal">
-              <Form.Input
-                fluid
+              <Form.TextArea
                 label="Description"
                 placeholder="Add a description of your recipe (maximum 255 characters)"
                 name="description"
-                defaultValue={props.version === 'edit' || 'fork' ? props.recipe.title : ''}
+                defaultValue={props.version === 'edit' || 'fork' ? props.recipe.description : ''}
               />
             </Form.Group>
             <Form.TextArea
@@ -88,10 +88,9 @@ const RecipeForm = props => {
             />
             <input type="file" name="image" />
             <Button
-              color='teal'
+              color='green'
               type='submit'
               name='submit'
-              fluid size='large'
               style={{ marginTop: '0.8rem' }}
             >
               {buttonText}
@@ -100,13 +99,13 @@ const RecipeForm = props => {
           <Button
             style={{ marginTop: '0.8rem' }}
             color='red'
-            fluid size='large'
             as={Link}
             name='cancel'
             to='/'
           >
               Cancel
           </Button>
+          </Container>
         </div>
       </Segment>
     </>

@@ -50,7 +50,7 @@ describe('Visitor can search for recipe', () => {
         cy.get('#search-submit').click()
       })
     })
-    cy.get("#search-error").should('contain', 'Your search yielded no results')
+    cy.get("#message").should('contain', 'Your search yielded no results for Shrimp')
   })
 
   it('unsuccessfully, query to short', () => {
@@ -62,27 +62,4 @@ describe('Visitor can search for recipe', () => {
     })
     cy.get("#search-error").should('contain', 'Please input more than two characters.')
   })
-
-  it('removes search query when cklick on Foodhub logo', () => {
-    cy.route({
-      method: 'POST',
-      url: 'http://localhost:3000/v1/search',
-      response: 'fixture:query_response.json'
-    })
-
-    cy.get('#navbar').within(() => {
-      cy.get('#nav-search').within(() => {
-        cy.get('#search-input').type('Quiche')
-        cy.get('#search-submit').click()
-      })       
-    })
-    cy.get('[name="recipe-1"]').within(() => {
-      cy.get('[name="recipe-title"]').should('contain', 'Quiche')
-    })
-
-    cy.get('#nav-home').click()
-    cy.get('[name="recipe-2"]').within(() => {
-      cy.get('[name="recipe-title"]').should('contain', 'Chocolate Croissant')
-    })
-  });
 })

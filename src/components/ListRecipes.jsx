@@ -7,24 +7,52 @@ import RecipeCard from "./RecipeCard"
 
 class ListRecipes extends Component {
   state = {
-    recipes: []
+    recipes: [],
+    message: null,
+    currentQuery: ''
   }
 
-  componentDidUpdate() {
-    this.checkCurrentRecipesForQuery()
+  componentDidUpdate(prevProps, newProps) {
+    this.checkCurrentRecipesForQuery(prevProps, newProps)
   }
 
-  checkCurrentRecipesForQuery = () => {
-    if (this.props.location.search == '?from_search') {
+  checkCurrentRecipesForQuery = (prevProps, newProps) => {
+    if (this.props.location.search == '?search') {
       if (this.props.location.state.queryResponse !== this.state.recipes) {
         this.setRecipes(this.props.location.state.queryResponse)
       }
+      if (this.props.location.state.message && this.state.currentQuery != this.props.location.state.query) {
+        this.setState({
+          message: `${this.props.location.state.message} for ${this.props.location.state.query}`,
+          currentQuery: this.props.location.state.query
+        })
+      }
+    }
+    if (prevProps.location.hash != this.props.location.hash) {
+      this.getRecipes()
+      this.setState({
+        message: null,
+        currentQuery: ''
+      })
     }
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.getRecipes()
+  }
+
+  getRecipes = async () => {
     let response = await fetchRecipes()
-    this.setRecipes(response)
+    if (response.length > 0) {
+      this.setRecipes(response)
+      this.setState({
+        message: null
+      })
+    } else {
+      this.setState({
+        message: "There are no recipes"
+      })
+    }
   }
 
   setRecipes = (recipes) => {
@@ -37,19 +65,23 @@ class ListRecipes extends Component {
     let renderListRecipes
     const recipeData = this.state.recipes
     let message
-    if (recipeData.length > 0) {
+
+    if (recipeData && recipeData.length > 0) {
       renderListRecipes = recipeData.reverse().map(recipe => {
         return <RecipeCard currentUser={false} key={recipe.id} recipe={recipe} linked />
       })
-    } else {
+    }
+
+    if (this.state.message) {
       message = (
         <Message style={{ color: "red" }}>
           <Header as="p" id="message" style={{ color: "#4C5966" }}>
-            There are no recipes
+            {this.state.message}
           </Header>
         </Message>
       )
     }
+
     return (
       <>
         {message}

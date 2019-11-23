@@ -76,7 +76,7 @@ class Login extends Component {
                   type='password'
                 />
                 <Button
-                  color='teal'
+                  color='grey'
                   type='submit'
                   name='submit'
                   fluid size='large'
@@ -96,7 +96,7 @@ class Login extends Component {
               </Form>
               <Button
                   style={{ marginTop: '0.8rem' }}
-                  color='blue'
+                  color='green'
                   fluid size='large'
                   onClick={this.props.handleModalOpen}
                 >

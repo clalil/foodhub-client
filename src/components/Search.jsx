@@ -27,8 +27,10 @@ class Search extends Component {
     } else {
       let response = await searchRecipes(query)
       if (response.errorMessage) {
-        this.setState({
-          errorMessage: response.errorMessage
+        history.push({
+          pathname: '/',
+          state: { message: response.errorMessage, query: query },
+          search: 'search'
         })
       } else {
         history.push({

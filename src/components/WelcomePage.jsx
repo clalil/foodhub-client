@@ -16,12 +16,12 @@ class Welcome extends Component {
         <div id="welcome">
           <LazyHero
             parallaxOffset={1}
-            minHeight='95vh'
+            minHeight='50vh'
             opacity={0.2}
             imageSrc={BackgroundImage}
           >
             <Responsive minWidth={1230}>
-              <div className="welcome-text" style={{ marginRight: '50rem', marginBottom: '20rem', textAlign: 'left' }}>
+              <div className="welcome-text" style={{ marginRight: '50rem', textAlign: 'left' }}>
                 <h1>
                   Social Cooking
                 </h1>
@@ -38,8 +38,8 @@ class Welcome extends Component {
                 <Icon name="arrow circle down" size="huge" />
               </Link>
             </Responsive>
-            <Responsive as={Segment} maxWidth={1229} style={{ padding: '4rem', paddingBottom: '8rem', opacity: '0.8', borderRadius: '10px' }}>
-              <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
+            <Responsive as={Segment} maxWidth={1229} style={{ opacity: '0.8', borderRadius: '10px' }}>
+              <div style={{ textAlign: 'center' }}>
                 <h1>
                   Social Cooking
                 </h1>
@@ -58,9 +58,9 @@ class Welcome extends Component {
             </Responsive>
           </LazyHero>
         </div>
-        <Container className="recipe-card-bg" style={{ marginTop: '2vh', fontSize: '1.5rem' }}>
+        <Container style={{ marginTop: '2vh', fontSize: '1.5rem', backgroundColor: '#white' }}>
           <Header sub
-            style={{ fontStyle: 'italic', fontWeight: 'bold', marginBottom: '2rem', backgroundColor: '#f2ede9', padding: '1rem', borderRadius: '5px', boxShadow: "1px 3px 1px #d9d5d1" }} id="view-all-recipes">
+            style={{ fontStyle: 'italic', fontWeight: 'bold', backgroundColor: '#b4d695', padding: '1rem', borderRadius: '5px', boxShadow: "1px 3px 1px #d9d5d1" }} id="view-all-recipes">
             <Icon name="caret down" size="huge" />
             Bring your recipes to the world!
             </Header>
