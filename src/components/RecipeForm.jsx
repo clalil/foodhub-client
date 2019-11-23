@@ -64,12 +64,11 @@ const RecipeForm = props => {
               />
             </Form.Group>
             <Form.Group widths="equal">
-              <Form.Input
-                fluid
+              <Form.TextArea
                 label="Description"
                 placeholder="Add a description of your recipe (maximum 255 characters)"
                 name="description"
-                defaultValue={props.version === 'edit' || 'fork' ? props.recipe.title : ''}
+                defaultValue={props.version === 'edit' || 'fork' ? props.recipe.description : ''}
               />
             </Form.Group>
             <Form.TextArea
