@@ -1,10 +1,11 @@
 import axios from 'axios'
 import getCurrentCredentials from './getCredentials'
-const apiUrl = 'http://localhost:3000/v1/'
+
+const baseURL = process.env.REACT_APP_API_URL
 
 const submitFavorite = async (recipeId) => {
   try {
-    let response = await axios.post(apiUrl + `recipes/${recipeId}/favorite`, 
+    let response = await axios.post(`${baseURL}/recipes/${recipeId}/favorite`, 
     {},
       {
         headers: getCurrentCredentials()
@@ -21,7 +22,7 @@ const submitFavorite = async (recipeId) => {
 }
 
 const fetchFavorites = async () => {
-  let response = await axios.get(apiUrl + 'favorites',
+  let response = await axios.get(baseURL + 'favorites',
   {
     headers: getCurrentCredentials()
   }
@@ -30,7 +31,7 @@ const fetchFavorites = async () => {
 }
 
 const fetchCookbookPdf = async () => {
-  let response = await axios.post(apiUrl + 'cookbooks',
+  let response = await axios.post(baseURL + 'cookbooks',
     {},
     {
       headers: getCurrentCredentials()
@@ -41,7 +42,7 @@ const fetchCookbookPdf = async () => {
 
 const submitRating = async (recipeId, rating) => {
   try {
-    let response = await axios.post(apiUrl + `recipes/${recipeId}/rating`, 
+    let response = await axios.post(`${baseURL}recipes/${recipeId}/rating`, 
       {
         score: rating
       },

@@ -20,6 +20,7 @@ const requireSignIn = generateRequireSignInWrapper({
 })
 
 class App extends Component {
+
   render() {
     return (
       <>

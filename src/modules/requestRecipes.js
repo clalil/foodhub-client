@@ -1,7 +1,7 @@
 import axios from 'axios'
 import getCurrentCredentials from './getCredentials'
 
-const apiUrl = 'http://localhost:3000/v1/'
+const baseURL = process.env.REACT_APP_API_URL
 
 const toBase64 = file => new Promise((resolve, reject) => {
   const reader = new FileReader()
@@ -11,13 +11,13 @@ const toBase64 = file => new Promise((resolve, reject) => {
 })
 
 const fetchRecipes = async () => {
-  let response = await axios.get(apiUrl + 'recipes')
+  let response = await axios.get(baseURL + 'recipes')
   return response.data.recipes
 }
 
 const searchRecipes = async (query) => {
   try {
-    let response = await axios.post(apiUrl + 'search',
+    let response = await axios.post(baseURL + 'search',
       {
         q: query
       }
@@ -32,7 +32,7 @@ const searchRecipes = async (query) => {
 }
 
 const fetchCurrentUsersRecipes = async () => {
-  let response = await axios.get(apiUrl + 'recipes?user_recipe=true',
+  let response = await axios.get(baseURL + 'recipes?user_recipe=true',
     {
       headers: getCurrentCredentials()
     }
@@ -55,7 +55,7 @@ const submitRecipe = async (title, description, ingredients, directions, image) 
       recipeParams.image = encodedImage
     }
 
-    let response = await axios.post(apiUrl + 'recipes',
+    let response = await axios.post(baseURL + 'recipes',
       {
         recipe: recipeParams
       },
@@ -89,7 +89,7 @@ const editRecipe = async (title, description, ingredients, directions, image, re
       recipeParams.image = encodedImage
     }
 
-    let response = await axios.put(apiUrl + `recipes/${recipeId}`,
+    let response = await axios.put(`${baseURL}/recipes/${recipeId}`,
       {
         recipe: recipeParams
       },
@@ -123,7 +123,7 @@ const forkRecipe = async (title, description, ingredients, directions, image, re
       recipeParams.image = encodedImage
     }
 
-    let response = await axios.post(apiUrl + `recipes/${recipeId}/fork`,
+    let response = await axios.post(`${baseURL}/recipes/${recipeId}/fork`,
       {
         recipe: recipeParams
       },
@@ -144,7 +144,7 @@ const forkRecipe = async (title, description, ingredients, directions, image, re
 
 const getSingleRecipe = async (recipeId) => {
   try {
-    let response = await axios.get(apiUrl + `recipes/${recipeId}`,
+    let response = await axios.get(`${baseURL}/recipes/${recipeId}`,
       {
         headers: getCurrentCredentials()
       }
