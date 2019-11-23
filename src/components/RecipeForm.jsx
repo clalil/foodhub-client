@@ -88,7 +88,7 @@ const RecipeForm = props => {
             />
             <input type="file" name="image" />
             <Button
-              color='teal'
+              color='green'
               type='submit'
               name='submit'
               style={{ marginTop: '0.8rem' }}
