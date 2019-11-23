@@ -49,7 +49,7 @@ const RecipeCard = props => {
         name={linked ? `recipe-${recipe.id}` : "single-recipe"}
         style={{ marginBottom: "0.5rem" }}
       >
-        <Container style={{ textAlign: 'center', paddingLeft: '5rem' }}>
+        <Container style={{ textAlign: 'center', padding: '0.5rem' }}>
           {addRecipeToFavorites}
           {props.children}
         </Container>
