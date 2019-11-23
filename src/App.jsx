@@ -14,18 +14,13 @@ import SignUp from './components/SignUp'
 import AboutUs from './components/AboutUs'
 import UserProfile from './components/UserProfile'
 import Search from './components/Search'
-import axios from "axios"
-
-const development = process.env.REACT_APP_DEV_API_KEY
-const production = process.env.REACT_APP_PROD_API_KEY
-
-axios.defaults.baseURL = production
 
 const requireSignIn = generateRequireSignInWrapper({
   redirectPathIfNotSignedIn: '/',
 })
 
 class App extends Component {
+
   render() {
     return (
       <>
