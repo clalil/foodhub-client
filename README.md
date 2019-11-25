@@ -3,16 +3,16 @@
 The application was created in November 2019, as a final project during the last 2 weeks of the Craft Academy [Full Stack Web Developer Bootcamp](https://craftacademy.se/english/). 
 
 ---
-## Authors
+### Authors
 [Clarissa Liljander](https://github.com/clalil)  
 [Sverrir Steindorsson](https://github.com/shsteindorsson)  
 [Yasmine Ezequiel](https://github.com/yasmineezequiel)  
 [Becca Burns]()  
 [Miyesier Kaerman]()  
 
-### Built with  
+## Built with  
 Back-end API:
-- [Ruby on Rails](https://rubyonrails.org/), verion 6.0.1  
+- [Ruby on Rails](https://rubyonrails.org/), version 6.0.1  
 - [RSpec](https://rspec.info/), for unit testing  
 - [Swagger](https://swagger.io/), for documenting our API as well as for unit testing  
 
@@ -22,6 +22,13 @@ Front-end Client:
 - [Enzyme](https://airbnb.io/enzyme/), for component testing
 - [Amazon webstorage](https://aws.amazon.com/), for storing user generated images 
 - [Semantic UI React](https://react.semantic-ui.com/) and CSS, for UX 
+
+<img src="./src/img/cookbook_first.png" alt="Image of app" width="40%">
+<img src="./src/img/cookbook_main.png" alt="Image of app" width="40%">
+<img src="./src/img/cookbook_directions.png" alt="Image of app" width="40%">
+<img src="./src/img/login.png" alt="Image of app" width="40%">
+<img src="./src/img/my_recipes.png" alt="Image of app" width="40%">
+<img src="./src/img/web_generate.png" alt="Image of app" width="40%">
 
 ### Dependencies  
 Back-end API:
