@@ -33,18 +33,13 @@ const App = ({ currentUser }) => {
           <Route exact path='/' component={WelcomePage} />
           <Route exact path='/recipes' component={ListRecipes} />
           <Route exact path='/recipe/:id' component={SingleRecipe} />
-          <Route exact path='/search' component={Search}></Route>
-          <Route exact path='/logout' component={Logout}>
-            {currentUser.isSignedIn === false ? <Redirect to="/" /> : <Logout />}
-          </Route>
-          <Route exact path='/signup' component={SignUp}>
-            {currentUser.isSignedIn ? <Redirect to="/" /> : <SignUp />}
-          </Route>
-          <Route exact path='/login' component={Login}>
-            {currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
-          </Route>
-          <Route exact path="/recipes/create" component={requireSignIn(RecipeCU)} />
+          <Route exact path='/search' component={Search} />
+          <Route exact path='/logout' component={Logout} />
+          <Route exact path='/signup' component={SignUp} />
+          <Route exact path='/login' component={Login} />
           <Route exact path='/about' component={AboutUs} />
+          {currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
+          <Route exact path="/recipes/create" component={requireSignIn(RecipeCU)} />
           <Route exact path="/cookbook" component={requireSignIn(Cookbook)} />
           <Route exact path="/profile" component={requireSignIn(UserProfile)} />
       </>
