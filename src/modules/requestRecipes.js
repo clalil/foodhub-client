@@ -1,5 +1,4 @@
 import axios from 'axios'
-import getCurrentCredentials from './getCredentials'
 
 const baseURL = process.env.REACT_APP_API_URL
 
@@ -32,11 +31,7 @@ const searchRecipes = async (query) => {
 }
 
 const fetchCurrentUsersRecipes = async () => {
-  let response = await axios.get(baseURL + 'recipes?user_recipe=true',
-    {
-      headers: getCurrentCredentials()
-    }
-  )
+  let response = await axios.get(baseURL + 'recipes?user_recipe=true')
   return response.data.recipes
 }
 
@@ -58,9 +53,6 @@ const submitRecipe = async (title, description, ingredients, directions, image) 
     let response = await axios.post(baseURL + 'recipes',
       {
         recipe: recipeParams
-      },
-      {
-        headers: getCurrentCredentials()
       }
     )
 
@@ -92,9 +84,6 @@ const editRecipe = async (title, description, ingredients, directions, image, re
     let response = await axios.put(`${baseURL}/recipes/${recipeId}`,
       {
         recipe: recipeParams
-      },
-      {
-        headers: getCurrentCredentials()
       }
     )
 
@@ -126,9 +115,6 @@ const forkRecipe = async (title, description, ingredients, directions, image, re
     let response = await axios.post(`${baseURL}/recipes/${recipeId}/fork`,
       {
         recipe: recipeParams
-      },
-      {
-        headers: getCurrentCredentials()
       }
     )
     return {
@@ -144,11 +130,7 @@ const forkRecipe = async (title, description, ingredients, directions, image, re
 
 const getSingleRecipe = async (recipeId) => {
   try {
-    let response = await axios.get(`${baseURL}/recipes/${recipeId}`,
-      {
-        headers: getCurrentCredentials()
-      }
-    )
+    let response = await axios.get(`${baseURL}/recipes/${recipeId}`)
     return {
       recipe: response.data.recipe
     }

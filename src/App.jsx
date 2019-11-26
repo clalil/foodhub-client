@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import ListRecipes from './components/ListRecipes'
 import SingleRecipe from './components/SingleRecipe'
 import Login from './components/Login'
@@ -14,14 +14,19 @@ import SignUp from './components/SignUp'
 import AboutUs from './components/AboutUs'
 import UserProfile from './components/UserProfile'
 import Search from './components/Search'
+import getCurrentCredentials from './modules/getCredentials'
+import axios from 'axios'
 
 const requireSignIn = generateRequireSignInWrapper({
   redirectPathIfNotSignedIn: '/',
 })
 
-class App extends Component {
+const App = ({ currentUser }) => {
 
-  render() {
+  useEffect(() => {
+    axios.defaults.headers = getCurrentCredentials()
+  }, [currentUser])
+
     return (
       <>
         <Navbar />
@@ -30,13 +35,13 @@ class App extends Component {
           <Route exact path='/recipe/:id' component={SingleRecipe} />
           <Route exact path='/search' component={Search}></Route>
           <Route exact path='/logout' component={Logout}>
-            {this.props.currentUser.isSignedIn === false ? <Redirect to="/" /> : <Logout />}
+            {currentUser.isSignedIn === false ? <Redirect to="/" /> : <Logout />}
           </Route>
           <Route exact path='/signup' component={SignUp}>
-            {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <SignUp />}
+            {currentUser.isSignedIn ? <Redirect to="/" /> : <SignUp />}
           </Route>
           <Route exact path='/login' component={Login}>
-            {this.props.currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
+            {currentUser.isSignedIn ? <Redirect to="/" /> : <Login />}
           </Route>
           <Route exact path="/recipes/create" component={requireSignIn(RecipeCU)} />
           <Route exact path='/about' component={AboutUs} />
@@ -44,7 +49,6 @@ class App extends Component {
           <Route exact path="/profile" component={requireSignIn(UserProfile)} />
       </>
     )
-  }
 }
 
 const mapStateToProps = state => {
