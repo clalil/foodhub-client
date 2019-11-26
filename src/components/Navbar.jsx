@@ -62,13 +62,6 @@ const Navbar = ({ currentUser }) => {
       </Menu.Item>
     )
   } else {
-    aboutUs = (
-      <Menu.Item id='nav-create' as={NavLink} to='/about'>
-        <Header position='right'>
-          About Us
-          </Header>
-      </Menu.Item>
-    )
     logIn = (
       <Menu.Item id='nav-login' className='fake-link-hover'>
         <Header
@@ -83,6 +76,14 @@ const Navbar = ({ currentUser }) => {
       </Menu.Item>
     )
   }
+
+  aboutUs = (
+    <Menu.Item id='nav-create' as={NavLink} to='/about'>
+      <Header position='right'>
+        About Us
+        </Header>
+    </Menu.Item>
+  )
   viewAll = (
     <Menu.Item>
       <Link
@@ -94,7 +95,6 @@ const Navbar = ({ currentUser }) => {
       </Link>
     </Menu.Item>
   )
-
   search = (
     <Menu.Item id='nav-search' className='fake-link-hover'>
       <Search
@@ -143,9 +143,9 @@ const Navbar = ({ currentUser }) => {
               <Icon name='food' size='large' />
             </Menu.Item>
             {welcomeMessage}
+            {aboutUs}
             {viewAll}
             {createRecipe}
-            {aboutUs}
             {cookbook}
             {logIn}
             {userProfile}
@@ -168,9 +168,9 @@ const Navbar = ({ currentUser }) => {
           </Menu.Item>
           <Menu.Menu position='right'>
             {welcomeMessage}
+            {aboutUs}
             {createRecipe}
             {viewAll}
-            {aboutUs}
             {cookbook}
             {logIn}
             {userProfile}
@@ -185,7 +185,6 @@ const Navbar = ({ currentUser }) => {
 
 const mapStateToProps = state => {
   return {
-    state: state,
     currentUser: state.reduxTokenAuth.currentUser
   }
 }
