@@ -19,8 +19,9 @@ class Login extends Component {
     email = email.value
 
     signInUser({ email, password })
-      .then(
-        console.log('Successful!')
+      .then(() => {if (this.props.currentUser.isSignedIn) {
+        this.props.history.push('/')
+      }}
       )
       .catch(error => {
         this.setState({
@@ -122,7 +123,7 @@ const mapDispatchToProps = {
   signInUser
 }
 
-export default connect(
+export default (connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login)
+)(Login))
