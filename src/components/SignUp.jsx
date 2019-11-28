@@ -22,8 +22,9 @@ class SignUp extends Component {
     password_confirmation = password_confirmation.value
 
     registerUser({ name, email, password, password_confirmation })
-      .then(
-        console.log('You have successfully been signed up')
+      .then(() => {if (this.props.currentUser.isSignedIn) {
+          this.props.history.push('/')
+        }}
       )
       .catch(error => {
         this.setState({
