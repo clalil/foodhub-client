@@ -87,7 +87,8 @@ To run all of our feature tests:
 
 ---
 ## Test Coverage and Continuous Integration (CI)
-[Coveralls](https://coveralls.io/) was used to test our code coverage during this project.  
+[Coveralls](https://coveralls.io/) was used to test our code coverage for the API during this project.  
+[Istanbul](https://istanbul.js.org/) was used to test our code's Cypress test coverage for the Client side of the project.  
 Continuous integration was handled using [Semaphore](https://semaphoreci.com/).  
 
 ---
