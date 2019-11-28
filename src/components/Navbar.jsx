@@ -143,9 +143,9 @@ const Navbar = ({ currentUser }) => {
               <Icon name='food' size='large' />
             </Menu.Item>
             {welcomeMessage}
+            {createRecipe}
             {aboutUs}
             {viewAll}
-            {createRecipe}
             {cookbook}
             {logIn}
             {userProfile}
@@ -168,8 +168,8 @@ const Navbar = ({ currentUser }) => {
           </Menu.Item>
           <Menu.Menu position='right'>
             {welcomeMessage}
-            {aboutUs}
             {createRecipe}
+            {aboutUs}
             {viewAll}
             {cookbook}
             {logIn}
