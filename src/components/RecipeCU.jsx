@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import { submitRecipe, editRecipe, forkRecipe } from "../modules/requestRecipes"
-import { withRouter } from "react-router"
 import RecipeForm from "./RecipeForm"
 import "../css/create-recipe.css"
 
@@ -89,4 +88,4 @@ class RecipeCU extends Component {
   }
 }
 
-export default withRouter(RecipeCU)
+export default RecipeCU
